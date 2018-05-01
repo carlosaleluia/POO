@@ -38,7 +38,8 @@ class Individual {
 	}
 	
 	boolean checkcycles(Segment next) {		
-		
+		//teste123
+	
 		
 		return true;
 	}
