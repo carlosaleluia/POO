@@ -1,4 +1,4 @@
-package extern;
+package generator;
 
 public interface GenerateNumber {
 
