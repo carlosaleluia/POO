@@ -1,5 +1,6 @@
 package specific;
 
+import java.util.LinkedList;
 
 class Grid {	
 	
@@ -83,9 +84,7 @@ class Grid {
 					if(x >= x1 && x <= x2  && y >= y1 && y+1 <= y2) {	
 						if(getValue(x,y,1)!=0 && getValue(x,y,1) < r.cost_zones[t]) {
 							setValue(x,y,1,r.cost_zones[t]);
-						}
-						
-						
+						}						
 					}										
 				}
 			}									
@@ -114,6 +113,26 @@ class Grid {
 	
 	public int getValue(int x, int y, int index) {
 		return Map[(y-1)*r.colsnb + (x-1)][index];
+	}
+	
+	
+	LinkedList<Segment> ValidSegments(Point A) {
+		
+		LinkedList<Segment> seglist = new LinkedList<Segment>();
+		
+		if(getValue(A.x,A.y,0) != 0) {
+			seglist.add(new Segment(new Point(A.x,A.y),new Point(A.x-1,A.y), getValue(A.x,A.y,0)));
+		}
+		if(getValue(A.x,A.y,1) != 0) {
+			seglist.add(new Segment(new Point(A.x,A.y),new Point(A.x,A.y+1), getValue(A.x,A.y,1)));
+		}
+		if(getValue(A.x,A.y,2) != 0) {
+			seglist.add(new Segment(new Point(A.x,A.y),new Point(A.x+1,A.y), getValue(A.x,A.y,2)));
+		}
+		if(getValue(A.x,A.y,2) != 0) {
+			seglist.add(new Segment(new Point(A.x,A.y),new Point(A.x,A.y-1), getValue(A.x,A.y,3)));
+		}
+		return seglist;
 	}
 	
 	

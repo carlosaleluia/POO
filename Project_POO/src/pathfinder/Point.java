@@ -1,10 +1,9 @@
-package pathfinder;
+package specific;
 
 public class Point {
 	
 	public int x;   // the real part
     public int y;   // the imaginary part
-    boolean obstacle;
 	
 	public Point(int x, int y) {
 		this.x =x;
