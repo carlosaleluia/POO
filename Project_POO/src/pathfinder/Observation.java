@@ -3,6 +3,7 @@ package pathfinder;
 import simulator.Event;
 
 import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Observation extends Event{
@@ -44,7 +45,9 @@ public class Observation extends Event{
 		System.out.println("\tFinal point has been hit:        "+y_n);
 		System.out.println("\tPath of the best fir individual: "+the_best.printpath());
 		System.out.println("\tCost/Comfort:                    "+the_best.current_cost+"/"+the_best.comfort);
-		return null;
+		List<Event> next_events=new ArrayList<Event>(1);
+		next_events.add(new Observation(observation_number+1,simulator,individual_list));
+		return next_events;
 	}
 
 }

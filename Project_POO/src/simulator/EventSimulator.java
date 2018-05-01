@@ -23,5 +23,8 @@ public abstract class EventSimulator implements Simulator{
 	public float GetNbEventsDone() {
 		return nb_events_done;
 	}
+	public double Generator(double[] par) {
+		return generator.Generate(par);
+	}
 	
 }

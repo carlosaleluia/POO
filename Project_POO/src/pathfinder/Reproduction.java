@@ -10,14 +10,13 @@ public class Reproduction extends Event{
 	Individual individual;
 	static double[] reproduction_param;
 	
-	List<Individual> individual_list;
+	LinkedList<Individual> individual_list;
 	Grid grid;
 	
-	public Reproduction(Individual i, List<Individual> l, Grid g) {
+	public Reproduction(Individual i, LinkedList<Individual> l, Grid g) {
 		individual=i;
 		individual_list=l;
 		grid=g;
-		//time!!
 	}
 
 	@Override

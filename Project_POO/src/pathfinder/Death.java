@@ -10,9 +10,9 @@ public class Death extends Event{
 	Individual individual;
 	static double[] death_param;
 	
-	List<Individual> individual_list;
+	LinkedList<Individual> individual_list;
 	
-	public Death(Individual i, List<Individual> l) {
+	public Death(Individual i, LinkedList<Individual> l) {
 		individual=i;
 		individual_list=l;
 		//time!!
@@ -20,6 +20,11 @@ public class Death extends Event{
 	
 	@Override
 	protected List<Event> doEvent() {
+		IndividualComparatorByComfort comp=new IndividualComparatorByComfort();
+		if(comp.compare(individual.simulator.the_best, individual)>0) {
+			//CLONE
+			//individual.simulator.the_best=individual;
+		}
 		individual_list.remove(individual);
 		return null;
 	}

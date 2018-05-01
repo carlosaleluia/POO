@@ -1,4 +1,4 @@
-package specific;
+package pathfinder;
 
 public class Point {
 	
