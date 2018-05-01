@@ -1,4 +1,4 @@
-package pathfinder;
+package specific;
 
 
 class Grid {	
@@ -14,32 +14,82 @@ class Grid {
 	
 	void initializeGrid() {
 		
-		int i = 0, j = 0;
+		int i = 0, j = 0, t = 0;
+		int x=0, y=0;
+		int x1 = 0, x2 = 0, y1 = 0, y2 = 0;
 		
+		//Initialization
 		for(i=0;i<r.colsnb * r.rowsnb;i++) {
 			for(j=0;j<4;j++) {
 				Map[i][j] = 1;
 			}
 		}		
-				
-		for(i=0; i<r.nbrobstacles;i++) {		
-			for(j=0;j<4;j++) {
-				Map[((r.obstacles[i].y)-1)*r.colsnb + (r.obstacles[i].x)-1][j] = 0;
-			}			
-		}
 		
+		//Obstacles
+		for(i=0; i<r.nbrobstacles;i++) {
+			x = r.obstacles[i].x;
+			y = r.obstacles[i].y;
+			
+			for(j=0;j<4;j++) {
+				setValue(x,y,j,0);
+			}	
+			//Update adjacent points
+			if(x-1 > 0) {
+				setValue(x-1,y,2,0);
+			}
+			if(x+1 < r.colsnb + 1) {
+				setValue(x+1,y,0,0);
+			}
+			if(y-1 > 0) {
+				setValue(x,y-1,1,0);
+			}
+			if(y+1 < r.rowsnb + 1) {
+				setValue(x,y+1,3,0);
+			}
+		}
+		//Limits of the grid
 		for(i=1;i<=r.colsnb;i++) {
-			Map[i-1][1]=0;		
-			Map[(r.rowsnb-1)*r.colsnb + i-1][3]=0;
+			setValue(i,1,3,0);
+			setValue(i,r.rowsnb,1,0);			
 		}
 		for(i=1;i<=r.rowsnb;i++) {
-			Map[(i-1)* r.colsnb][0]=0;		
-			Map[(i-1)* r.colsnb + r.colsnb-1][2]=0;
+			setValue(1,i,0,0);
+			setValue(r.colsnb,i,2,0);
 		}
 		
+		for(t=0;t<r.nbrzones;t++) {
+			x1= r.zones[t][0].x;
+			y1= r.zones[t][0].y;
+			x2= r.zones[t][1].x;
+			y2= r.zones[t][1].y;
+			for(x=1; x<=r.colsnb; x++) {
+				for(y=1; y<=r.rowsnb;y++) {	
 		
-		
-		
+					if(x-1 >= x1 && x <= x2  && y >= y1 && y <= y2) {
+						if(getValue(x,y,0) != 0 && getValue(x,y,0) < r.cost_zones[t]) {
+							setValue(x,y,0,r.cost_zones[t]);
+						}
+					}
+					if(x >= x1 && x+1 <= x2  && y >= y1 && y <= y2) {
+						if(getValue(x,y,2) !=0 && getValue(x,y,2) < r.cost_zones[t]) {
+							setValue(x,y,2,r.cost_zones[t]);
+						}																			
+					}
+					if(x >= x1 && x <= x2  && y-1 >= y1 && y <= y2) {
+						if(getValue(x,y,3)!=0 && getValue(x,y,3) < r.cost_zones[t]) {
+							setValue(x,y,3,r.cost_zones[t]);
+						}							
+					}
+					if(x >= x1 && x <= x2  && y >= y1 && y+1 <= y2) {	
+						if(getValue(x,y,1)!=0 && getValue(x,y,1) < r.cost_zones[t]) {
+							setValue(x,y,1,r.cost_zones[t]);
+						}
+						
+						
+					}										
+				}
+			}									
+		}
 	}
 	
 
@@ -53,13 +103,18 @@ class Grid {
 				
 				print = print +"i: "+ i + " j: " + j + " Value: " + Map[i][j] + "\n";
 			}
-		}
-		
-		
-		
+		}			
 		return print;
 	}
 	
+	
+	public void setValue(int x, int y, int index, int value) {
+		Map[(y-1)*r.colsnb + (x-1)][index] = value;
+	}
+	
+	public int getValue(int x, int y, int index) {
+		return Map[(y-1)*r.colsnb + (x-1)][index];
+	}
 	
 	
 	
