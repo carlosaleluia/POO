@@ -12,10 +12,10 @@ public class Move extends Event{
 	
 	Grid grid;
 	
-	public Move(Individual i, Grid g) {
+	public Move(Individual i, Grid g, double[] par) {
 		individual=i;
 		grid=g;
-		//time!!
+		time=individual.simulator.Generator(par);
 	}
 	
 	@Override

@@ -12,10 +12,11 @@ public class Death extends Event{
 	
 	LinkedList<Individual> individual_list;
 	
-	public Death(Individual i, LinkedList<Individual> l) {
+	public Death(Individual i, LinkedList<Individual> l, double[] par) {
 		individual=i;
 		individual_list=l;
-		//time!!
+		individual.death_event=this;
+		time=individual.simulator.Generator(par);
 	}
 	
 	@Override

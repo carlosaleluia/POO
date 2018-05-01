@@ -9,6 +9,7 @@ public class MainSimulator extends EventSimulator{
 	final int max_population, comfortsens, n , m;
 	
 	final Point initial, destination;
+	double[] death_param, move_param, reproduction_param;
 	
 	boolean final_point_hit;
 	
