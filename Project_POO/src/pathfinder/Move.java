@@ -1,4 +1,4 @@
-package especific;
+package pathfinder;
 
 import simulator.Event;
 
@@ -10,9 +10,9 @@ public class Move extends Event{
 	Individual individual;
 	static double[] move_param;
 	
-	SegmentList grid;
+	Grid grid;
 	
-	public Move(Individual i, SegmentList g) {
+	public Move(Individual i, Grid g) {
 		individual=i;
 		grid=g;
 		//time!!
@@ -20,9 +20,9 @@ public class Move extends Event{
 	
 	@Override
 	protected Event[] doEvent() {
-		Point position=individual.path.peekLast().end;
-		LinkedList<Segment> valid_segments=grid.ValidSegments(position);
-		int k=valid_segments.size();
+		Point position=individual.list_segments.peekLast().end;
+		//LinkedList<Segment> valid_segments=grid.ValidSegments(position);
+		//int k=valid_segments.size();
 		
 		
 		Event[] next_events=new Event[1];

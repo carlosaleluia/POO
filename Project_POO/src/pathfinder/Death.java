@@ -1,4 +1,4 @@
-package especific;
+package pathfinder;
 
 import simulator.Event;
 
