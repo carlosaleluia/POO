@@ -1,5 +1,7 @@
 package pathfinder;
 import java.util.LinkedList;
+import java.util.ListIterator;
+
 
 class Individual {
 	
@@ -38,17 +40,34 @@ class Individual {
 	  }
 	}
 	
-	boolean checkcycles(Segment next) {		
-		//teste1234
-	
+	//Checks if there is a cycle, if there isn't insert and update comfort and nb_segments and cost
+	//If there is a cycle, delete everything and update everything
+	public boolean checkcycles(Segment nextseg) {		
 		
-		return false;
+		ListIterator<Segment> listIt = list_segments.listIterator(list_segments.size());
+		boolean cycle = false;
+				
+		while(listIt.hasNext())
+		{
+			Segment temp = listIt.next();			
+			if(temp.end.equals(nextseg.end)) {
+				cycle = true;							
+			}
+			if(cycle == true) {
+				current_cost = current_cost - temp.cost;
+				current_nbsegments--;
+				list_segments.remove(temp);
+			}			
+		}				
+		if(cycle == false) {			
+			list_segments.add(nextseg);
+			current_cost = current_cost + nextseg.cost;
+			current_nbsegments++;			
+		}
+				
+		return cycle;
 	}
-	
-	public String printpath() {
-		return null;
-	}
-	
+
 	
 
 }
