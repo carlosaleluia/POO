@@ -45,6 +45,10 @@ class Individual {
 		return true;
 	}
 	
+	public String printpath() {
+		return null;
+	}
+	
 	
 
 }

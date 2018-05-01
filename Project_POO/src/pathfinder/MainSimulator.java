@@ -10,6 +10,8 @@ public class MainSimulator extends EventSimulator{
 	
 	final Point initial, destination;
 	
+	boolean final_point_hit;
+	
 	Grid Map;
 	
 	/* Em cada epidemia faz-se sort para os 5 melhores,e SOBREVIVEM */
@@ -50,6 +52,7 @@ public class MainSimulator extends EventSimulator{
 		
 	}
 	
+	@Override
 	public void StartSimulation(){
 		
 		/*criar a primeira lista de individuos e observacoes*/
