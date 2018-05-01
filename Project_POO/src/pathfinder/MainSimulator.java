@@ -1,11 +1,12 @@
 package pathfinder;
 
 import java.util.LinkedList;
+import simulator.EventSimulator;
 
-public class MainSimulator {
+public class MainSimulator{
 	
 	
-	final int max_population, comfortsens,n , m;
+	final int max_population, comfortsens, n , m;
 	
 	final Point initial, destination;
 	

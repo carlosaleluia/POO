@@ -1,5 +1,5 @@
 package pathfinder;
-import java.util.*;
+import java.util.LinkedList;
 
 class Individual {
 	
@@ -9,6 +9,7 @@ class Individual {
 	int current_nbsegments;
 	Point current;
 	LinkedList<Segment> list_segments;
+	Death death_event;
 	
 	Individual(float c, int c_c, int c_n, Point d, Point current) {
 		this.comfort = c;
