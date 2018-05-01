@@ -15,13 +15,13 @@ class Individual {
 	Reproduction reproduction_event;
 	Move move_event;
 	
-	Individual(float c, int c_c, int c_n, Point d, Point current) {
-		this.comfort = c;
-		this.current_cost = c_c;
-		this.current_nbsegments = c_n;
-		this.current = current;
-		this.list_segments = new LinkedList<Segment>();
+	Individual(MainSimulator m, LinkedList<Segment> list_segments) {		
+		this.simulator = m;
+		this.list_segments = list_segments;
+		calculatecostnbsegments();
+		updatecomfort();
 	}
+	
 	
 	void updatecomfort(){
 		double a,b;
@@ -69,6 +69,31 @@ class Individual {
 				
 		return cycle;
 	}
+	
+	void calculatecostnbsegments() {		
+		ListIterator<Segment> listIt = list_segments.listIterator(list_segments.size());				
+		while(listIt.hasNext())
+		{
+			Segment temp = listIt.next();						
+			current_cost = current_cost + temp.cost;
+			current_nbsegments++;
+		}										
+	}
+
+void printpath() {
+	ListIterator<Segment> listIt = list_segments.listIterator(list_segments.size());
+	String result = "";
+	Segment temp = null;
+	while(listIt.hasNext())
+	{
+		temp = listIt.next();	
+		result = result + "("+temp.start.x+","+temp.start.y+")"+",";
+	}
+	if(temp != null) {
+		result = result + "("+temp.end.x+","+temp.end.y+")";
+	}
+	System.out.println(result);
+}
 
 	
 
