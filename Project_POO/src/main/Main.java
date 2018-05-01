@@ -1,6 +1,6 @@
 package main;
 
-import specific.MainSimulator;
+import pathfinder.MainSimulator;
 
 public class Main{
 	

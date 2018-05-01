@@ -1,4 +1,4 @@
-package especific;
+package pathfinder;
 
 import simulator.Event;
 
@@ -11,9 +11,9 @@ public class Reproduction extends Event{
 	static double[] reproduction_param;
 	
 	List<Individual> individual_list;
-	SegmentList grid;
+	Grid grid;
 	
-	public Reproduction(Individual i, List<Individual> l, SegmentList g) {
+	public Reproduction(Individual i, List<Individual> l, Grid g) {
 		individual=i;
 		individual_list=l;
 		grid=g;

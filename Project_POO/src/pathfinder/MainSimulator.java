@@ -1,4 +1,4 @@
-package specific;
+package pathfinder;
 
 import java.util.LinkedList;
 
