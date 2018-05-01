@@ -10,6 +10,8 @@ class Individual {
 	Point current;
 	LinkedList<Segment> list_segments;
 	Death death_event;
+	Reproduction reproduction_event;
+	Move move_event;
 	
 	Individual(float c, int c_c, int c_n, Point d, Point current) {
 		this.comfort = c;

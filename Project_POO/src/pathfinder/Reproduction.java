@@ -18,6 +18,7 @@ public class Reproduction extends Event{
 		individual=i;
 		individual_list=l;
 		grid=g;
+		individual.reproduction_event=this;
 		time=individual.simulator.Generator(par);
 	}
 
