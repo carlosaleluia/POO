@@ -1,6 +1,6 @@
 package simulator;
 
-import extern.GenerateNumber;
+import generator.GenerateNumber;
 
 public abstract class EventSimulator implements Simulator{
 
