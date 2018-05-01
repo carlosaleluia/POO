@@ -1,13 +1,16 @@
 package pathfinder;
 
 import java.util.LinkedList;
+import simulator.EventSimulator;
 
-public class MainSimulator {
+public class MainSimulator extends EventSimulator{
 	
 	
-	final int max_population, comfortsens,n , m;
+	final int max_population, comfortsens, n , m;
 	
 	final Point initial, destination;
+	
+	boolean final_point_hit;
 	
 	Grid Map;
 	
@@ -49,7 +52,8 @@ public class MainSimulator {
 		
 	}
 	
-	public void startsimulation(){
+	@Override
+	public void StartSimulation(){
 		
 		/*criar a primeira lista de individuos e observacoes*/
 		

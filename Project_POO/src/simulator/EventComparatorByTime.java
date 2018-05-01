@@ -1,7 +1,6 @@
 package simulator;
 
 import java.util.Comparator;
-import simulator.Event;
 
 
 public class EventComparatorByTime implements Comparator<Event>{
