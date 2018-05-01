@@ -17,11 +17,10 @@ public class Observation extends Event{
 		observation_number=nb;
 		simulator=s;
 		individual_list=l;
-		//time=simulator.final_instant;
 	}
 	
 	@Override
-	protected Event[] doEvent() {
+	protected List<Event> doEvent() {
 		individual_list.sort(new IndividualComparatorByComfort());
 		if(!individual_list.isEmpty()) {
 			

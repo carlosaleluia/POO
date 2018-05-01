@@ -1,18 +1,36 @@
 package simulator;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.PriorityQueue;
 
 public class PEC implements EventContainer{
 
 	PriorityQueue<Event> events;
 	
+	public PEC(int size_estimate) {
+		events=new PriorityQueue<Event>(size_estimate, new EventComparatorByTime());
+	}
+	
 	public PEC() {
-		events=new PriorityQueue<Event>(1000, new EventComparatorByTime());
+		this(1000);
 	}
 	
 	@Override
 	public void addEvent(Event e) {
-		events.add(e);
+		if(e==null) return;
+		else events.add(e);
+	}
+	
+	@Override
+	public void addEvent(List<Event> e) {
+		if(e==null) return;
+		else {
+			for(Iterator<Event> i=e.iterator();i.hasNext();) {
+				events.add(i.next());
+			}
+		}
+		
 	}
 
 	@Override

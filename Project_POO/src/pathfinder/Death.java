@@ -19,7 +19,7 @@ public class Death extends Event{
 	}
 	
 	@Override
-	protected Event[] doEvent() {
+	protected List<Event> doEvent() {
 		individual_list.remove(individual);
 		return null;
 	}

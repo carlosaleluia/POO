@@ -10,4 +10,10 @@ public abstract class EventSimulator implements Simulator{
 	protected float simulation_time;
 	protected float final_instant;
 	
+	
+	@Override
+	public void Next() {
+		container.addEvent(container.nextEvent().doEvent());
+	}
+	
 }

@@ -3,7 +3,7 @@ package pathfinder;
 import java.util.LinkedList;
 import simulator.EventSimulator;
 
-public class MainSimulator{
+public class MainSimulator extends EventSimulator{
 	
 	
 	final int max_population, comfortsens, n , m;
@@ -50,7 +50,7 @@ public class MainSimulator{
 		
 	}
 	
-	public void startsimulation(){
+	public void StartSimulation(){
 		
 		/*criar a primeira lista de individuos e observacoes*/
 		

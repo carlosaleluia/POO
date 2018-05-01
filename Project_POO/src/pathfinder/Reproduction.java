@@ -21,7 +21,7 @@ public class Reproduction extends Event{
 	}
 
 	@Override
-	protected Event[] doEvent() {
+	protected List<Event> doEvent() {
 		Individual newborn=null;
 		
 		individual_list.add(newborn);
@@ -30,7 +30,7 @@ public class Reproduction extends Event{
 		next_events[1]=new Death(newborn,individual_list);
 		next_events[2]=new Move(newborn,grid);
 		next_events[3]=new Reproduction(newborn,individual_list,grid);
-		return next_events;
+		return null;
 	}
 
 }
