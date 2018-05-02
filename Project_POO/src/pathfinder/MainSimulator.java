@@ -48,9 +48,10 @@ public class MainSimulator extends EventSimulator{
 		
 		System.out.println(Map);
 		
-		/*start simulation*/
-		/*while(1)     --PEC NOT EMPTY --TEMPO DE SIMULACAO EXCEDIDO   */
-		/*contar number de eventos feitos*/
+		//this.StartSimulation();
+		//while(!PEC.isempty() || lasteevent.time > tempofinal)  
+		//... redifinir PEC.isempty para se tiver 1 unico evento acabar
+		/*fazer next event.. e ir contando eventos feitos*/
 		
 		
 		
