@@ -29,7 +29,8 @@
 
 <!ELEMENT specialcostzones (zone)>
 <!ATTLIST specialcostzones
-  xmlns CDATA #FIXED ''>
+  xmlns CDATA #FIXED ''
+  num CDATA #REQUIRED>
 
 <!ELEMENT obstacles (obstacle)+>
 <!ATTLIST obstacles
