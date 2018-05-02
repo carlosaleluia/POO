@@ -2,6 +2,7 @@ package pathfinder;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.lang.*;
 
 import simulator.Event;
 import simulator.EventSimulator;
@@ -60,20 +61,20 @@ public class MainSimulator extends EventSimulator{
 		System.out.println("Comfort: " + this.comfortsens + "\n");
 		System.out.println("Parameters: " + "Death: "+  this.param_death + " Move: "+ this.param_move + " Reproduction: " + this.param_reproduce +"\n");	
 		
-		List<Event> aux;
+	//	List<Event> aux;
 		
-		//this.StartSimulation();
+		this.StartSimulation();
 		//... redifinir PEC.isempty para se tiver 1 unico evento acabar
-		while((pec.nextEvent().time() < this.finalinst) && !pec.isempty() ) {
+	//	while((pec.nextEvent().time() < this.finalinst) && !pec.isempty() ) {
 			
 			// aux = pec.nextEvent().doEvent();
 			//this.nb_eventsdone++;
 			
-			if(this.list_individuals.size() > this.max_population) {
+		//	if(this.list_individuals.size() > this.max_population) {
 				//EPIDEMIAAAAAA
-			}
+		//	}
 			
-		}
+	//	}
 		
 		
 	}
@@ -93,21 +94,26 @@ public class MainSimulator extends EventSimulator{
 		
 		for(i = 0 ; i < this.init_population ; i++) {
 			a = new Individual(this,new LinkedList<Segment>());
-			//tempo dos eventos?
-		//	d = new Death(a,this.list_individuals,??);
-		//	r = new Reproduction(a,this.list_individuals,this.Map,??);
-		//	m = new Move(a,this.Map,??);
-		//  a.death_event = d;
-		//  a.reproduction_event = r;
-		//  a.move_event = m;	
 			a.current_cost = 0 ;
 			a.current_nbsegments = 0;
 			a.updatecomfort();
+			 
+			death_param[0] = (1 - Math. log(1 - a.comfort))*param_death;
+			death_param[1] = 0;			
+			d = new Death(a,this.list_individuals, death_param );
+			reproduction_param[0] = (1 - Math. log(1 - a.comfort))*param_reproduce;
+			reproduction_param[1] = 0;	
+			r = new Reproduction(a,this.list_individuals,this.Map,reproduction_param);
+			move_param[0] = (1 - Math. log(1 - a.comfort))*param_move;
+			move_param[1] = 0;
+			m = new Move(a,this.Map,move_param);
+		    a.death_event = d;
+		    a.reproduction_event = r;
+		    a.move_event = m;	
 			this.list_individuals.add(a);
-		//	this.pec.addEvent(d);
-//			this.pec.addEvent(r);
-//			this.pec.addEvent(m);
-			
+			this.pec.addEvent(d);
+			this.pec.addEvent(r);
+			this.pec.addEvent(m);			
 		}
 		
 		
