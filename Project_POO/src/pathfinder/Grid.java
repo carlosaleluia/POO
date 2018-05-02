@@ -66,22 +66,22 @@ class Grid {
 			for(x=1; x<=r.colsnb; x++) {
 				for(y=1; y<=r.rowsnb;y++) {	
 		
-					if(x-1 >= x1 && x <= x2  && y >= y1 && y <= y2) {
+					if(x-1 >= x1 && x <= x2  && (y == y1 || y == y2) ) {
 						if(getValue(x,y,0) != 0 && getValue(x,y,0) < r.cost_zones[t]) {
 							setValue(x,y,0,r.cost_zones[t]);
 						}
 					}
-					if(x >= x1 && x+1 <= x2  && y >= y1 && y <= y2) {
+					if(x >= x1 && x+1 <= x2  && (y == y1 || y == y2 )) {
 						if(getValue(x,y,2) !=0 && getValue(x,y,2) < r.cost_zones[t]) {
 							setValue(x,y,2,r.cost_zones[t]);
 						}																			
 					}
-					if(x >= x1 && x <= x2  && y-1 >= y1 && y <= y2) {
+					if((x == x1 || x == x2)  && y-1 >= y1 && y <= y2) {
 						if(getValue(x,y,3)!=0 && getValue(x,y,3) < r.cost_zones[t]) {
 							setValue(x,y,3,r.cost_zones[t]);
 						}							
 					}
-					if(x >= x1 && x <= x2  && y >= y1 && y+1 <= y2) {	
+					if((x == x1 || x == x2)  && y >= y1 && y+1 <= y2) {	
 						if(getValue(x,y,1)!=0 && getValue(x,y,1) < r.cost_zones[t]) {
 							setValue(x,y,1,r.cost_zones[t]);
 						}						

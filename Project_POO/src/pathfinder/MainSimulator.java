@@ -1,43 +1,46 @@
 package pathfinder;
 
-import java.util.LinkedList;
+import java.util.LinkedList; 
 import simulator.EventSimulator;
+import simulator.PEC;
 
 public class MainSimulator extends EventSimulator{
 	
 	
-	final int max_population, comfortsens, n , m;
-	
-	final Point initial, destination;
+	final int init_population, max_population;
+	final int n, m; //n is the number of lines, m is the number of columns
+	final int comfortsens; // Comfort Parameter
+	final int finalinst; // Final instant of the simulation
+	final int param_death, param_move, param_reproduce;	//Parameteres for number generator
+	final Point initial, destination; // Initial and Final Point
 	double[] death_param, move_param, reproduction_param;
 	
 	boolean final_point_hit;
 	
 	Grid Map;
-	
-	/* Em cada epidemia faz-se sort para os 5 melhores,e SOBREVIVEM */
+	PEC pec;
 	LinkedList<Individual> list_individuals;
 	
 	Individual the_best;
 	
-	public MainSimulator(String s) {
-				
+	public MainSimulator(String s) {				
 		ReadFile r = new ReadFile(s); 
 		r.readXML();		
 		
 		Map = new Grid(r);
 		Map.initializeGrid();
 		
-		this.max_population = r.maxpop;
-		this.comfortsens = r.comfortsens;
+		this.init_population = r.initpop;
+		this.max_population = r.maxpop;				
 		this.n = r.rowsnb;
 		this.m= r.colsnb;
-		
+		this.comfortsens = r.comfortsens;			
 		this.initial = r.initialpoint;
-		this.destination = r.finalpoint;
-		
-		this.list_individuals = new LinkedList<Individual>();	
-
+		this.destination = r.finalpoint;		
+		this.finalinst = r.finalinst;
+		this.param_death = r.param_death;
+		this.param_move = r.param_move;
+		this.param_reproduce = r.param_reproduce;		
 	}
 	
 	
@@ -45,10 +48,19 @@ public class MainSimulator extends EventSimulator{
 		
 		System.out.println(Map);
 		
-		/*start simulation*/
-		/*while(1)     --PEC NOT EMPTY --TEMPO DE SIMULACAO EXCEDIDO   */
-		/*contar number de eventos feitos*/
+		System.out.println("\nPARAMETERS READ FROM XML FILE: \n");
+		System.out.println("Final instant: " + this.finalinst + "\n");
+		System.out.println("Initial population: " + this.init_population + "\n");
+		System.out.println("Max population: " + this.max_population + "\n");
+		System.out.println("Comfort: " + this.comfortsens + "\n");
+		System.out.println("Parameters: " + "Death: "+  this.param_death + " Move: "+ this.param_move + " Reproduction: " + this.param_reproduce +"\n");	
 		
+		
+		//this.StartSimulation();
+		//while(!PEC.isempty() || lasteevent.time > tempofinal)  
+		//... redifinir PEC.isempty para se tiver 1 unico evento acabar
+		/*fazer next event.. e ir contando eventos feitos*/
+		//check se é preciso epidemia
 		
 		
 	}
@@ -56,7 +68,18 @@ public class MainSimulator extends EventSimulator{
 	@Override
 	public void StartSimulation(){
 		
-		/*criar a primeira lista de individuos e observacoes*/
+		int i = 0;
+		
+		this.pec = new PEC(100000); //???
+		this.list_individuals = new LinkedList<Individual>();
+		//preciso de criar a primeira observacao e adicionar à PEC
+		
+		for(i = 0 ; i < this.init_population ; i++) {
+			this.list_individuals.add(new Individual(this,new LinkedList<Segment>()));
+			
+			//preciso de criar os primeiros 3 eventos para todos e adicionar à PEC
+		}
+		
 		
 		
 	}

@@ -81,7 +81,7 @@ class Individual {
 		}										
 	}
 
-void printpath() {
+String printpath() {
 	ListIterator<Segment> listIt = list_segments.listIterator(list_segments.size());
 	String result = "";
 	Segment temp = null;
@@ -93,7 +93,7 @@ void printpath() {
 	if(temp != null) {
 		result = result + "("+temp.end.x+","+temp.end.y+")";
 	}
-	System.out.println(result);
+	return result;
 }
 
 	
