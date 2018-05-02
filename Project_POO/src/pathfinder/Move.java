@@ -23,6 +23,7 @@ public class Move extends Event{
 	@Override
 	protected List<Event> doEvent() {
 		Point position=individual.list_segments.peekLast().end;
+		LinkedList<Segment> seglist=grid.ValidSegments(position);
 		
 		
 		List<Event> next_events=new ArrayList<Event>(1);
