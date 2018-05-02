@@ -2,7 +2,6 @@ package pathfinder;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-import javax.swing.text.Segment;
 
 
 class Individual {
@@ -60,7 +59,7 @@ class Individual {
 			if(cycle == true) {
 				current_cost = current_cost - temp.cost;
 				current_nbsegments--;
-				listIt.remove(temp);
+				listIt.remove();
 			}			
 		}				
 		if(cycle == false) {			
