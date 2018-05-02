@@ -11,6 +11,8 @@ public class Move extends Event{
 	Individual individual;
 	static double[] move_param;
 	
+	//check if reached final point, if so compare with THE BEST, if better than the BEST update THE BEST
+	
 	Grid grid;
 	
 	public Move(Individual i, Grid g, double[] par) {

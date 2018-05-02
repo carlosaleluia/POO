@@ -48,6 +48,14 @@ public class MainSimulator extends EventSimulator{
 		
 		System.out.println(Map);
 		
+		System.out.println("\nPARAMETERS READ FROM XML FILE: \n");
+		System.out.println("Final instant: " + this.finalinst + "\n");
+		System.out.println("Initial population: " + this.init_population + "\n");
+		System.out.println("Max population: " + this.max_population + "\n");
+		System.out.println("Comfort: " + this.comfortsens + "\n");
+		System.out.println("Parameters: " + "Death: "+  this.param_death + " Move: "+ this.param_move + " Reproduction: " + this.param_reproduce +"\n");	
+		
+		
 		//this.StartSimulation();
 		//while(!PEC.isempty() || lasteevent.time > tempofinal)  
 		//... redifinir PEC.isempty para se tiver 1 unico evento acabar
