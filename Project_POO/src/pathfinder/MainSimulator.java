@@ -1,10 +1,6 @@
 package pathfinder;
 
 import java.util.LinkedList;
-import java.util.List;
-import java.lang.*;
-
-import simulator.Event;
 import simulator.EventSimulator;
 import simulator.PEC;
 
@@ -40,13 +36,17 @@ public class MainSimulator extends EventSimulator{
 		this.n = r.rowsnb;
 		this.m= r.colsnb;
 		this.comfortsens = r.comfortsens;			
-		this.initial = r.initialpoint;
-		this.destination = r.finalpoint;		
+		this.initial = new Point(r.initialpoint.x,r.initialpoint.y);  
+		this.destination = new Point(r.finalpoint.x,r.finalpoint.y);
 		this.finalinst = r.finalinst;
 		this.param_death = r.param_death;
 		this.param_move = r.param_move;
 		this.param_reproduce = r.param_reproduce;
 		this.nb_events_done = 0;
+		
+		death_param = new double[2];
+		reproduction_param = new double[2];
+		move_param = new double[2];		
 	}
 	
 	
@@ -86,34 +86,40 @@ public class MainSimulator extends EventSimulator{
 		Individual a;
 		Death d;
 		Reproduction r;
+		Observation o;
 		Move m;
 		
-		this.pec = new PEC(100000); //???
+		this.pec = new PEC(3* this.max_population); 
 		this.list_individuals = new LinkedList<Individual>();
-		//preciso de criar a primeira observacao e adicionar à PEC
+		
+		o = new Observation(this,this.list_individuals);
+		this.pec.addEvent(o);
+		
 		
 		for(i = 0 ; i < this.init_population ; i++) {
+			
 			a = new Individual(this,new LinkedList<Segment>());
-			a.current_cost = 0 ;
-			a.current_nbsegments = 0;
+			a.current = new Point(this.initial.x, this.initial.y);
 			a.updatecomfort();
-			 
+			
 			death_param[0] = (1 - Math. log(1 - a.comfort))*param_death;
 			death_param[1] = 0;			
-			d = new Death(a,this.list_individuals, death_param );
+//			d = new Death(a,this.list_individuals, death_param );
 			reproduction_param[0] = (1 - Math. log(1 - a.comfort))*param_reproduce;
 			reproduction_param[1] = 0;	
-			r = new Reproduction(a,this.list_individuals,this.Map,reproduction_param);
+//			r = new Reproduction(a,this.list_individuals,this.Map,reproduction_param);
 			move_param[0] = (1 - Math. log(1 - a.comfort))*param_move;
 			move_param[1] = 0;
-			m = new Move(a,this.Map,move_param);
-		    a.death_event = d;
-		    a.reproduction_event = r;
-		    a.move_event = m;	
+//			m = new Move(a,this.Map,move_param);
+//		    a.death_event = d;
+//		    a.reproduction_event = r;
+//		    a.move_event = m;	
 			this.list_individuals.add(a);
-			this.pec.addEvent(d);
-			this.pec.addEvent(r);
-			this.pec.addEvent(m);			
+//			this.pec.addEvent(d);
+//			this.pec.addEvent(r);
+//			this.pec.addEvent(m);	
+			System.out.println(a);
+			
 		}
 		
 		

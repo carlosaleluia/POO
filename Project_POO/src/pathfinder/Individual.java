@@ -8,8 +8,8 @@ class Individual {
 	
 	MainSimulator simulator;
 	float comfort;
-	int current_cost;
-	int current_nbsegments;
+	int current_cost = 0;
+	int current_nbsegments = 0;
 	Point current;
 	LinkedList<Segment> list_segments;
 	Death death_event;
@@ -20,7 +20,6 @@ class Individual {
 		this.simulator = m;
 		this.list_segments = list_segments;
 		calculatecostnbsegments();
-		updatecomfort();
 	}
 	
 	
@@ -34,7 +33,7 @@ class Individual {
 	
 	double findpath() {
 	  double dist = 0;
-	  if(current.equals(simulator.destination)) {
+	  if(this.current.equals(this.simulator.destination)) {
 		  return 0;
 	  }
 	  else {
@@ -96,6 +95,16 @@ String printpath() {
 	return result;
 }
 
+
+@Override
+public String toString() {
+	return "Individual [comfort=" + comfort + ", current_cost=" + current_cost + ", current_nbsegments="
+			+ current_nbsegments + ", current=" + current + ", list_segments=" + list_segments  + "]";
+}
+
 	
+	
+
+
 
 }
