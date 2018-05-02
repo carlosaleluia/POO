@@ -105,11 +105,11 @@ public class ReadFile extends DefaultHandler {
 			this.initialpoint = new Point(0,0);				
 			for(i=0;i<atts.getLength();i++) {				 
 				switch(atts.getLocalName(i)) {
-					case("xinicial"):{
+					case("xinitial"):{
 					 	initialpoint.x = Integer.parseInt(atts.getValue(i));
 					 	break;
 					 }
-					 case("yinicial"):{
+					 case("yinitial"):{
 						initialpoint.y = Integer.parseInt(atts.getValue(i));
 					 	break;
 					 }
@@ -149,11 +149,11 @@ public class ReadFile extends DefaultHandler {
 			 this.zones[idzone][1] = new Point(0,0);
 			for(i=0;i<atts.getLength();i++) {				 
 				switch(atts.getLocalName(i)) {
-					case("xinicial"):{
+					case("xinitial"):{
 						 this.zones[idzone][0].x = Integer.parseInt(atts.getValue(i));
 					 	break;
 					 }
-					 case("yinicial"):{
+					 case("yinitial"):{
 						 this.zones[idzone][0].y = Integer.parseInt(atts.getValue(i));
 					 	break;
 					 }

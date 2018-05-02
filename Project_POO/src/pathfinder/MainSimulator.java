@@ -52,7 +52,7 @@ public class MainSimulator extends EventSimulator{
 		//while(!PEC.isempty() || lasteevent.time > tempofinal)  
 		//... redifinir PEC.isempty para se tiver 1 unico evento acabar
 		/*fazer next event.. e ir contando eventos feitos*/
-		
+		//check se é preciso epidemia
 		
 		
 	}
