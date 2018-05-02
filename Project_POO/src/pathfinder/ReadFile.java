@@ -140,7 +140,7 @@ public class ReadFile extends DefaultHandler {
 				 }		
 		 }
 		 else if (tag.equals("specialcostzones")){
-			nbrzones = atts.getLength();
+			nbrzones = Integer.parseInt(atts.getValue(0));
 			this.zones = new Point[nbrzones][2];
 			this.cost_zones = new int[nbrzones];
 		 }	
