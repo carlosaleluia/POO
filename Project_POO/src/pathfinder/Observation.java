@@ -43,7 +43,7 @@ public class Observation extends Event{
 		System.out.println("\tNumber of realized events:       "+simulator.GetNbEventsDone());
 		System.out.println("\tPopulation size:                 "+individual_list.size());
 		System.out.println("\tFinal point has been hit:        "+y_n);
-		System.out.println("\tPath of the best fir individual: "+ the_best.printpath());
+		System.out.println("\tPath of the best fit individual: "+the_best.printpath());
 		System.out.println("\tCost/Comfort:                    "+the_best.current_cost+"/"+the_best.comfort);
 		List<Event> next_events=new ArrayList<Event>(1);
 		next_events.add(new Observation(observation_number+1,simulator,individual_list));
