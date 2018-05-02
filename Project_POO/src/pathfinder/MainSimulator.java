@@ -1,7 +1,8 @@
 package pathfinder;
 
-import java.util.LinkedList; //??
+import java.util.LinkedList; 
 import simulator.EventSimulator;
+import simulator.PEC;
 
 public class MainSimulator extends EventSimulator{
 	
@@ -17,8 +18,7 @@ public class MainSimulator extends EventSimulator{
 	boolean final_point_hit;
 	
 	Grid Map;
-	
-	/* Em cada epidemia faz-se sort para os 5 melhores,e SOBREVIVEM */
+	PEC pec;
 	LinkedList<Individual> list_individuals;
 	
 	Individual the_best;
@@ -41,8 +41,6 @@ public class MainSimulator extends EventSimulator{
 		this.param_death = r.param_death;
 		this.param_move = r.param_move;
 		this.param_reproduce = r.param_reproduce;		
-		this.list_individuals = new LinkedList<Individual>();
-
 	}
 	
 	
@@ -61,7 +59,18 @@ public class MainSimulator extends EventSimulator{
 	@Override
 	public void StartSimulation(){
 		
-		/*criar a primeira lista de individuos e observacoes*/
+		int i = 0;
+		
+		this.pec = new PEC(100000); //???
+		this.list_individuals = new LinkedList<Individual>();
+		//preciso de criar a primeira observacao e adicionar à PEC
+		
+		for(i = 0 ; i < this.init_population ; i++) {
+			this.list_individuals.add(new Individual(this,new LinkedList<Segment>()));
+			
+			//preciso de criar os primeiros 3 eventos para todos e adicionar à PEC
+		}
+		
 		
 		
 	}
