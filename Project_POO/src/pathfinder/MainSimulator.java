@@ -1,6 +1,9 @@
 package pathfinder;
 
-import java.util.LinkedList; 
+import java.util.LinkedList;
+import java.util.List;
+
+import simulator.Event;
 import simulator.EventSimulator;
 import simulator.PEC;
 
@@ -11,8 +14,9 @@ public class MainSimulator extends EventSimulator{
 	final int n, m; //n is the number of lines, m is the number of columns
 	final int comfortsens; // Comfort Parameter
 	final int finalinst; // Final instant of the simulation
-	final int param_death, param_move, param_reproduce;	//Parameteres for number generator
+	final int param_death, param_move, param_reproduce;	//Parameters for number generator
 	final Point initial, destination; // Initial and Final Point
+	int nbeventsdone;
 	double[] death_param, move_param, reproduction_param;
 	
 	boolean final_point_hit;
@@ -40,7 +44,8 @@ public class MainSimulator extends EventSimulator{
 		this.finalinst = r.finalinst;
 		this.param_death = r.param_death;
 		this.param_move = r.param_move;
-		this.param_reproduce = r.param_reproduce;		
+		this.param_reproduce = r.param_reproduce;
+		this.nb_events_done = 0;
 	}
 	
 	
@@ -55,12 +60,20 @@ public class MainSimulator extends EventSimulator{
 		System.out.println("Comfort: " + this.comfortsens + "\n");
 		System.out.println("Parameters: " + "Death: "+  this.param_death + " Move: "+ this.param_move + " Reproduction: " + this.param_reproduce +"\n");	
 		
+		List<Event> aux;
 		
 		//this.StartSimulation();
-		//while(!PEC.isempty() || lasteevent.time > tempofinal)  
 		//... redifinir PEC.isempty para se tiver 1 unico evento acabar
-		/*fazer next event.. e ir contando eventos feitos*/
-		//check se é preciso epidemia
+		while((pec.nextEvent().time() < this.finalinst) && !pec.isempty() ) {
+			
+			// aux = pec.nextEvent().doEvent();
+			//this.nb_eventsdone++;
+			
+			if(this.list_individuals.size() > this.max_population) {
+				//EPIDEMIAAAAAA
+			}
+			
+		}
 		
 		
 	}
@@ -69,15 +82,32 @@ public class MainSimulator extends EventSimulator{
 	public void StartSimulation(){
 		
 		int i = 0;
+		Individual a;
+		Death d;
+		Reproduction r;
+		Move m;
 		
 		this.pec = new PEC(100000); //???
 		this.list_individuals = new LinkedList<Individual>();
 		//preciso de criar a primeira observacao e adicionar à PEC
 		
 		for(i = 0 ; i < this.init_population ; i++) {
-			this.list_individuals.add(new Individual(this,new LinkedList<Segment>()));
+			a = new Individual(this,new LinkedList<Segment>());
+			//tempo dos eventos?
+		//	d = new Death(a,this.list_individuals,??);
+		//	r = new Reproduction(a,this.list_individuals,this.Map,??);
+		//	m = new Move(a,this.Map,??);
+		//  a.death_event = d;
+		//  a.reproduction_event = r;
+		//  a.move_event = m;	
+			a.current_cost = 0 ;
+			a.current_nbsegments = 0;
+			a.updatecomfort();
+			this.list_individuals.add(a);
+		//	this.pec.addEvent(d);
+//			this.pec.addEvent(r);
+//			this.pec.addEvent(m);
 			
-			//preciso de criar os primeiros 3 eventos para todos e adicionar à PEC
 		}
 		
 		
