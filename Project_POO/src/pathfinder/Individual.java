@@ -59,14 +59,19 @@ class Individual {
 	//If there is a cycle, delete everything and update everything
 	public boolean checkcycles(Segment nextseg) {		
 		
-		ListIterator<Segment> listIt = list_segments.listIterator(list_segments.size());
+		ListIterator<Segment> listIt = list_segments.listIterator(0);
 		boolean cycle = false;
+		
+
+		System.out.println("Next segment" + nextseg.end);
 				
 		while(listIt.hasNext())
 		{
-			Segment temp = listIt.next();			
+			Segment temp = listIt.next();
+			System.out.println("iterate" + temp.end);
+			
 			if(temp.end.equals(nextseg.end)) {
-				cycle = true;							
+				cycle = true;
 			}
 			if(cycle == true) {
 				current_cost = current_cost - temp.cost;

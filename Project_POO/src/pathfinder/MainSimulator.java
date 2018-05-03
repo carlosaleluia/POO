@@ -100,7 +100,7 @@ public class MainSimulator extends EventSimulator{
 			death_param[0] = (1 - Math. log(1 - a.comfort))*param_death;
 			death_param[1] = 0;			
 			d = new Death(a,this.list_individuals, death_param );
-			reproduction_param[0] = (1 - Math. log(1 - a.comfort))*param_reproduce;
+			reproduction_param[0] = (1 - Math. log(1 - a.comfort))*10000;
 			reproduction_param[1] = 0;	
 			r = new Reproduction(a,this.list_individuals,this.Map,reproduction_param);
 			move_param[0] = (1 - Math. log(1 - a.comfort))*param_move;

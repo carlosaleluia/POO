@@ -28,8 +28,10 @@ public class Observation extends Event{
 	protected List<Event> doEvent() {
 		individual_list.sort(new IndividualComparatorByComfort());
 		IndividualComparatorByPath comp=new IndividualComparatorByPath();
-		if(comp.compare(individual_list.getFirst(),simulator.the_best)>0) {
-			simulator.the_best.copyIndividual(individual_list.getFirst());
+		if(!individual_list.isEmpty()) {
+			if(comp.compare(individual_list.getFirst(),simulator.the_best)>0) {
+				simulator.the_best.copyIndividual(individual_list.getFirst());
+			}
 		}
 		else simulator.the_best=simulator.the_best;
 		

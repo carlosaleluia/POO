@@ -40,7 +40,12 @@ public class Move extends Event{
 		if(comp.compare(individual,individual.simulator.the_best)>0) {
 			individual.simulator.the_best.copyIndividual(individual);
 		}
-		individual.current=individual.list_segments.peekLast().end;
+		if(individual.list_segments.isEmpty()) {
+			individual.current = individual.simulator.initial;
+		}
+		else {
+			individual.current=individual.list_segments.peekLast().end;			
+		}	
 		List<Event> next_events=new ArrayList<Event>(1);
 		Event aux=new Move(individual,grid,individual.simulator.move_param,time);
 		if(aux.time()<individual.death_event.time() && aux.time()<individual.simulator.GetFinalInstant())
