@@ -25,19 +25,18 @@ public class Move extends Event{
 	
 	@Override
 	protected List<Event> doEvent() {
-		Point position=individual.list_segments.peekLast().end;
+		Point position=individual.current;
 		LinkedList<Segment> seglist=grid.ValidSegments(position);
 		Random random=new Random();
 		Segment new_segment=seglist.get(random.nextInt(seglist.size()));
 		individual.list_segments.add(new_segment);
 		individual.updatecomfort();
-		IndividualComparatorByComfort comp=new IndividualComparatorByComfort();
-		if(comp.compare(individual.simulator.the_best, individual)>0) {
-			//CLONE
-			//individual.simulator.the_best=individual;
+		IndividualComparatorByPath comp=new IndividualComparatorByPath();
+		if(comp.compare(individual,individual.simulator.the_best)>0) {
+			individual.simulator.the_best.copyIndividual(individual);
 		}
 		
-		
+		individual.current=individual.list_segments.peekLast().end;
 		List<Event> next_events=new ArrayList<Event>(1);
 		Event aux=new Move(individual,grid,individual.simulator.move_param);
 		if(aux.time()<individual.death_event.time() && aux.time()<individual.simulator.GetFinalInstant())

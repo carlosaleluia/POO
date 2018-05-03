@@ -11,7 +11,6 @@ public class Observation extends Event{
 	int observation_number;
 	MainSimulator simulator;
 	LinkedList<Individual> individual_list;
-	Individual the_best;
 
 	
 	public Observation(int nb, MainSimulator s, LinkedList<Individual> l) {
@@ -28,23 +27,26 @@ public class Observation extends Event{
 	@Override
 	protected List<Event> doEvent() {
 		individual_list.sort(new IndividualComparatorByComfort());
-		IndividualComparatorByComfort comp=new IndividualComparatorByComfort();
-		if(comp.compare(simulator.the_best, individual_list.getFirst())>0) {
-			the_best=individual_list.getFirst();
+		IndividualComparatorByPath comp=new IndividualComparatorByPath();
+		if(comp.compare(individual_list.getFirst(),simulator.the_best)>0) {
+			simulator.the_best.copyIndividual(individual_list.getFirst());
 		}
-		else the_best=simulator.the_best;
+		else simulator.the_best=simulator.the_best;
 		
 		String y_n;
 		if(simulator.final_point_hit) y_n="yes";
 		else y_n="no";
+		double c_c;
+		if(simulator.the_best.has_reached) c_c=simulator.the_best.current_cost;
+		else c_c=simulator.the_best.comfort;
 		
 		System.out.println("Observation "+observation_number);
 		System.out.println("\tPresent instant:                 "+time);
 		System.out.println("\tNumber of realized events:       "+simulator.GetNbEventsDone());
 		System.out.println("\tPopulation size:                 "+individual_list.size());
 		System.out.println("\tFinal point has been hit:        "+y_n);
-		System.out.println("\tPath of the best fit individual: "+the_best.printpath());
-		System.out.println("\tCost/Comfort:                    "+the_best.current_cost+"/"+the_best.comfort);
+		System.out.println("\tPath of the best fit individual: "+simulator.the_best.printpath());
+		System.out.println("\tCost/Comfort:                    "+c_c);
 		List<Event> next_events=new ArrayList<Event>(1);
 		next_events.add(new Observation(observation_number+1,simulator,individual_list));
 		return next_events;
