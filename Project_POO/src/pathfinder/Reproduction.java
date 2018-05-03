@@ -53,6 +53,7 @@ public class Reproduction extends Event{
 		aux=new Move(newborn,grid,individual.simulator.move_param,time);
 		if(aux.time()<newborn.death_event.time() && aux.time()<individual.simulator.GetFinalInstant())
 			next_events.add(aux);
+		//System.out.println("SIZE RETURNED"+next_events.size());
 		return next_events;
 	}
 

@@ -33,7 +33,6 @@ public class Observation extends Event{
 				simulator.the_best.copyIndividual(individual_list.getFirst());
 			}
 		}
-		else simulator.the_best=simulator.the_best;
 		
 		String y_n;
 		if(simulator.final_point_hit) y_n="yes";
@@ -50,7 +49,9 @@ public class Observation extends Event{
 		System.out.println("\tPath of the best fit individual: "+simulator.the_best.printpath());
 		System.out.println("\tCost/Comfort:                    "+c_c);
 		List<Event> next_events=new ArrayList<Event>(1);
-		next_events.add(new Observation(observation_number+1,simulator,individual_list));
+		if(observation_number<19) {
+			next_events.add(new Observation(observation_number+1,simulator,individual_list));
+		}
 		return next_events;
 	}
 
