@@ -46,6 +46,7 @@ public class MainSimulator extends EventSimulator{
 		this.container = new PEC(3* this.max_population);
 		this.generator = new ExpRandom();
 		this.list_individuals = new LinkedList<Individual>();
+		this.the_best = new Individual(this,new LinkedList<Segment>());
 		
 		death_param = new double[2];
 		reproduction_param = new double[2];
@@ -66,15 +67,15 @@ public class MainSimulator extends EventSimulator{
 
 		this.StartSimulation();
 		//... redifinir PEC.isempty para se tiver 1 unico evento acabar
-	//	while(!pec.isempty()) {
+		while(!container.isempty()) {
 			
-			// Next();
+			 Next();
 		
 		//	if(this.list_individuals.size() > this.max_population) {
 				//EPIDEMIAAAAAA
 		//	}
 			
-	//	}
+		}
 		
 		
 	}

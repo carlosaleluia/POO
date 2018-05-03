@@ -113,7 +113,12 @@ public String toString() {
 }
 
 	
-	
+	void copyIndividual(Individual i) {		
+		this.current_cost = i.current_cost;
+		this.list_segments = i.list_segments;
+		this.has_reached = i.has_reached;
+		this.comfort = i.comfort;				
+	}
 
 
 
