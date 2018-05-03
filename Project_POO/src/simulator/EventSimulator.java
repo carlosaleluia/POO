@@ -4,8 +4,8 @@ import generator.GenerateNumber;
 
 public abstract class EventSimulator implements Simulator{
 
-	GenerateNumber generator;
-	EventContainer container;
+	protected GenerateNumber generator;
+	protected EventContainer container;
 	
 	protected float final_instant;
 	protected int nb_events_done;
