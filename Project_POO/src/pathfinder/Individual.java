@@ -111,7 +111,7 @@ class Individual {
 		result=result.concat(current.toString());
 		//result = result + current;
 	}*/
-	result=result.concat(current.toString());
+//	result=result.concat(current.toString()); ??? 
 	/*System.out.println("PRINTING2");
 	System.out.println(current.toString());
 	System.out.println(result.concat(current.toString()));

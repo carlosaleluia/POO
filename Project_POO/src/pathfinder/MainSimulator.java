@@ -66,7 +66,6 @@ public class MainSimulator extends EventSimulator{
 		System.out.println("Parameters: " + "Death: "+  this.param_death + " Move: "+ this.param_move + " Reproduction: " + this.param_reproduce +"\n");	
 
 		this.StartSimulation();
-		//... redifinir PEC.isempty para se tiver 1 unico evento acabar
 		while(!HasOnlyObservation()) {
 			
 			 Next();
@@ -100,7 +99,7 @@ public class MainSimulator extends EventSimulator{
 			death_param[0] = (1 - Math. log(1 - a.comfort))*param_death;
 			death_param[1] = 0;			
 			d = new Death(a,this.list_individuals, death_param );
-			reproduction_param[0] = (1 - Math. log(1 - a.comfort))*10000;
+			reproduction_param[0] = (1 - Math. log(1 - a.comfort))*100;
 			reproduction_param[1] = 0;	
 			r = new Reproduction(a,this.list_individuals,this.Map,reproduction_param);
 			move_param[0] = (1 - Math. log(1 - a.comfort))*param_move;
@@ -118,6 +117,7 @@ public class MainSimulator extends EventSimulator{
 		
 	}
 	private boolean HasOnlyObservation() {
+		System.out.println("number events :" + container.numberEvents());
 		if (container.numberEvents()<=1) return true;
 		else return false;
 	}
