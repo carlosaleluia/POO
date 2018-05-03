@@ -39,7 +39,7 @@ public class PEC implements EventContainer{
 		
 	}
 
-	//mudar isto? para ficar pelo menos 1
+	
 	@Override
 	public boolean isempty() {
 		return events.isEmpty();

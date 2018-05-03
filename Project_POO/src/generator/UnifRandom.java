@@ -11,7 +11,7 @@ public class UnifRandom extends GenerateRandom{
 		//int n =random.nextInt(par[2]) + par[1]; 
 		//return n;
 		
-		return random.nextInt(10) + 0;
+		return random.nextDouble()*(par[1]-par[0])+par[0];
 			
 	}
 }
