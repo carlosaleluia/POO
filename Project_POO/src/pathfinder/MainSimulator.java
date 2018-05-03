@@ -1,6 +1,8 @@
 package pathfinder;
 
 import java.util.LinkedList;
+
+import generator.ExpRandom;
 import simulator.EventSimulator;
 import simulator.PEC;
 
@@ -41,7 +43,8 @@ public class MainSimulator extends EventSimulator{
 		this.param_reproduce = r.param_reproduce;
 		this.nb_events_done = 0;
 				
-		this.container = new PEC(3* this.max_population); 
+		this.container = new PEC(3* this.max_population);
+		this.generator = new ExpRandom();
 		this.list_individuals = new LinkedList<Individual>();
 		
 		death_param = new double[2];
@@ -60,9 +63,7 @@ public class MainSimulator extends EventSimulator{
 		System.out.println("Max population: " + this.max_population + "\n");
 		System.out.println("Comfort: " + this.comfortsens + "\n");
 		System.out.println("Parameters: " + "Death: "+  this.param_death + " Move: "+ this.param_move + " Reproduction: " + this.param_reproduce +"\n");	
-		
-	//	List<Event> aux;
-		
+
 		this.StartSimulation();
 		//... redifinir PEC.isempty para se tiver 1 unico evento acabar
 	//	while(!pec.isempty()) {
@@ -100,20 +101,20 @@ public class MainSimulator extends EventSimulator{
 			
 			death_param[0] = (1 - Math. log(1 - a.comfort))*param_death;
 			death_param[1] = 0;			
-//			d = new Death(a,this.list_individuals, death_param );
+			d = new Death(a,this.list_individuals, death_param );
 			reproduction_param[0] = (1 - Math. log(1 - a.comfort))*param_reproduce;
 			reproduction_param[1] = 0;	
-//			r = new Reproduction(a,this.list_individuals,this.Map,reproduction_param);
+			r = new Reproduction(a,this.list_individuals,this.Map,reproduction_param);
 			move_param[0] = (1 - Math. log(1 - a.comfort))*param_move;
 			move_param[1] = 0;
-//			m = new Move(a,this.Map,move_param);
-//		    a.death_event = d;
-//		    a.reproduction_event = r;
-//		    a.move_event = m;	
+			m = new Move(a,this.Map,move_param);
+		    a.death_event = d;
+		    a.reproduction_event = r;
+		    a.move_event = m;	
 			this.list_individuals.add(a);
-//			this.pec.addEvent(d);
-//			this.pec.addEvent(r);
-//			this.pec.addEvent(m);	
+			this.container.addEvent(d);
+			this.container.addEvent(r);
+			this.container.addEvent(m);	
 			System.out.println(a);
 			
 		}

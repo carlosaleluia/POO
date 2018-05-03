@@ -15,6 +15,7 @@ class Individual {
 	Death death_event;
 	Reproduction reproduction_event;
 	Move move_event;
+	boolean has_reached;
 	
 	Individual(MainSimulator m, LinkedList<Segment> list_segments) {		
 		this.simulator = m;
@@ -23,6 +24,7 @@ class Individual {
 		
 		if(list_segments.isEmpty()) {
 			current = new Point(simulator.initial.x,simulator.initial.y);
+			this.has_reached = false;
 		}
 		else {
 			current = new Point(list_segments.getLast().end.x,list_segments.getLast().end.y);
