@@ -28,14 +28,15 @@ public class Move extends Event{
 		Point position=individual.current;
 		LinkedList<Segment> seglist=grid.ValidSegments(position);
 		Random random=new Random();
+		//System.out.println("Point:"+position.x+","+position.y);
+		//System.out.println("POSS SIZE:"+seglist.size());
 		Segment new_segment=seglist.get(random.nextInt(seglist.size()));
-		individual.list_segments.add(new_segment);
+		individual.checkcycles(new_segment);
 		individual.updatecomfort();
 		IndividualComparatorByPath comp=new IndividualComparatorByPath();
 		if(comp.compare(individual,individual.simulator.the_best)>0) {
 			individual.simulator.the_best.copyIndividual(individual);
 		}
-		
 		individual.current=individual.list_segments.peekLast().end;
 		List<Event> next_events=new ArrayList<Event>(1);
 		Event aux=new Move(individual,grid,individual.simulator.move_param);

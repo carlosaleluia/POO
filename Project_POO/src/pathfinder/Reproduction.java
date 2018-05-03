@@ -28,6 +28,10 @@ public class Reproduction extends Event{
 		int length_new=(int)Math.ceil(individual.list_segments.size()*(0.9+0.1*individual.comfort));
 		LinkedList<Segment> newborn_list=new LinkedList<Segment>();
 		int k=0;
+		/*System.out.println("1:");
+		System.out.println((int)Math.ceil(individual.list_segments.size()*(0.9+0.1*individual.comfort)));
+		System.out.println(individual.comfort);
+		System.out.println(individual.list_segments.size());*/
 		for(Iterator<Segment> i=individual.list_segments.iterator();k<length_new;++k) {
 			newborn_list.add(i.next());
 		}

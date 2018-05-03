@@ -35,8 +35,10 @@ class Individual {
 	
 	void updatecomfort(){
 		double a,b;
-		a = Math.pow(simulator.comfortsens,(1 - ((current_cost - current_nbsegments + 2)/((simulator.comfortsens - 1)*current_nbsegments + 3))));
-		b = Math.pow(simulator.comfortsens,(1-(this.findpath())/ (simulator.n + simulator.m + 1)));
+		a = Math.pow((1 - ((current_cost - current_nbsegments + 2)/((simulator.comfortsens - 1)*current_nbsegments + 3))),simulator.comfortsens);
+		b = Math.pow((1-(this.findpath())/ (simulator.n + simulator.m + 1)),simulator.comfortsens);
+		//a = Math.pow(simulator.comfortsens,(1 - ((current_cost - current_nbsegments + 2)/((simulator.comfortsens - 1)*current_nbsegments + 3))));
+		//b = Math.pow(simulator.comfortsens,(1-(this.findpath())/ (simulator.n + simulator.m + 1)));
 		this.comfort = (float) (a* b);
 	}
 	

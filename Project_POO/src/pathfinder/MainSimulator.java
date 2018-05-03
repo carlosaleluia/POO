@@ -34,7 +34,7 @@ public class MainSimulator extends EventSimulator{
 		this.max_population = r.maxpop;				
 		this.n = r.rowsnb;
 		this.m= r.colsnb;
-		this.comfortsens = r.comfortsens;			
+		this.comfortsens = r.comfortsens;	
 		this.initial = new Point(r.initialpoint.x,r.initialpoint.y);  
 		this.destination = new Point(r.finalpoint.x,r.finalpoint.y);
 		this.final_instant = r.finalinst;

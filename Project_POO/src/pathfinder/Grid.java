@@ -129,7 +129,7 @@ class Grid {
 		if(getValue(A.x,A.y,2) != 0) {
 			seglist.add(new Segment(new Point(A.x,A.y),new Point(A.x+1,A.y), getValue(A.x,A.y,2)));
 		}
-		if(getValue(A.x,A.y,2) != 0) {
+		if(getValue(A.x,A.y,3) != 0) {
 			seglist.add(new Segment(new Point(A.x,A.y),new Point(A.x,A.y-1), getValue(A.x,A.y,3)));
 		}
 		return seglist;
