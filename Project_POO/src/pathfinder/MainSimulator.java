@@ -122,6 +122,9 @@ public class MainSimulator extends EventSimulator{
 		else return false;
 	}
 	
+	public void Epidemics() {
+		
+	}
 	
 
 }
