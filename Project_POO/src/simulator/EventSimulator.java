@@ -7,7 +7,6 @@ public abstract class EventSimulator implements Simulator{
 	GenerateNumber generator;
 	EventContainer container;
 	
-	protected float simulation_time;
 	protected float final_instant;
 	protected int nb_events_done;
 	
@@ -15,6 +14,7 @@ public abstract class EventSimulator implements Simulator{
 	@Override
 	public void Next() {
 		container.addEvent(container.nextEvent().doEvent());
+		nb_events_done++;
 	}
 	
 	public float GetFinalInstant() {

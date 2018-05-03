@@ -27,8 +27,7 @@ class Individual {
 		else {
 			current = new Point(list_segments.getLast().end.x,list_segments.getLast().end.y);
 		}
-		updatecomfort();
-		
+		updatecomfort();		
 	}
 	
 	

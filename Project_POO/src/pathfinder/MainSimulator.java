@@ -10,10 +10,8 @@ public class MainSimulator extends EventSimulator{
 	final int init_population, max_population;
 	final int n, m; //n is the number of lines, m is the number of columns
 	final int comfortsens; // Comfort Parameter
-	final int finalinst; // Final instant of the simulation
 	final int param_death, param_move, param_reproduce;	//Parameters for number generator
 	final Point initial, destination; // Initial and Final Point
-	int nbeventsdone;
 	double[] death_param, move_param, reproduction_param;
 	
 	boolean final_point_hit;
@@ -38,7 +36,7 @@ public class MainSimulator extends EventSimulator{
 		this.comfortsens = r.comfortsens;			
 		this.initial = new Point(r.initialpoint.x,r.initialpoint.y);  
 		this.destination = new Point(r.finalpoint.x,r.finalpoint.y);
-		this.finalinst = r.finalinst;
+		this.final_instant = r.finalinst;
 		this.param_death = r.param_death;
 		this.param_move = r.param_move;
 		this.param_reproduce = r.param_reproduce;
@@ -55,7 +53,7 @@ public class MainSimulator extends EventSimulator{
 		System.out.println(Map);
 		
 		System.out.println("\nPARAMETERS READ FROM XML FILE: \n");
-		System.out.println("Final instant: " + this.finalinst + "\n");
+		System.out.println("Final instant: " + this.final_instant + "\n");
 		System.out.println("Initial population: " + this.init_population + "\n");
 		System.out.println("Max population: " + this.max_population + "\n");
 		System.out.println("Comfort: " + this.comfortsens + "\n");
@@ -65,11 +63,10 @@ public class MainSimulator extends EventSimulator{
 		
 		this.StartSimulation();
 		//... redifinir PEC.isempty para se tiver 1 unico evento acabar
-	//	while((pec.nextEvent().time() < this.finalinst) && !pec.isempty() ) {
+	//	while(!pec.isempty()) {
 			
-			// aux = pec.nextEvent().doEvent();
-			//this.nb_eventsdone++;
-			
+			// Next();
+		
 		//	if(this.list_individuals.size() > this.max_population) {
 				//EPIDEMIAAAAAA
 		//	}
