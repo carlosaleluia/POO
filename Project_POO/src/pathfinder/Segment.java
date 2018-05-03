@@ -16,4 +16,5 @@ class Segment {
 		return this.cost;
 	}
 
+	
 }

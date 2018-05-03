@@ -1,4 +1,5 @@
 package pathfinder;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -92,18 +93,25 @@ class Individual {
 		}										
 	}
 
-String printpath() {
-	ListIterator<Segment> listIt = list_segments.listIterator(list_segments.size());
+	public String printpath() {
+	Iterator<Segment> listIt = list_segments.iterator();
 	String result = "";
 	Segment temp = null;
 	while(listIt.hasNext())
 	{
 		temp = listIt.next();	
-		result = result + "("+temp.start.x+","+temp.start.y+")"+",";
+		result=result.concat(temp.start.toString());
 	}
-	if(temp != null) {
-		result = result + "("+temp.end.x+","+temp.end.y+")";
-	}
+	/*if(temp == null) {
+		result=result.concat(current.toString());
+		//result = result + current;
+	}*/
+	result=result.concat(current.toString());
+	/*System.out.println("PRINTING2");
+	System.out.println(current.toString());
+	System.out.println(result.concat(current.toString()));
+	result=result.concat(current.toString());
+	System.out.println(result);*/
 	return result;
 }
 

@@ -39,7 +39,6 @@ public class Reproduction extends Event{
 			newborn_list.add(i.next());
 		}
 		Individual newborn=new Individual(individual.simulator, newborn_list);
-		
 		individual_list.add(newborn);
 		List<Event> next_events=new ArrayList<Event>(4);
 		Event aux=new Reproduction(individual,individual_list,grid,individual.simulator.reproduction_param,time);
