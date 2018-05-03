@@ -20,6 +20,15 @@ class Individual {
 		this.simulator = m;
 		this.list_segments = list_segments;
 		calculatecostnbsegments();
+		
+		if(list_segments.isEmpty()) {
+			current = new Point(simulator.initial.x,simulator.initial.y);
+		}
+		else {
+			current = new Point(list_segments.getLast().end.x,list_segments.getLast().end.y);
+		}
+		updatecomfort();
+		
 	}
 	
 	

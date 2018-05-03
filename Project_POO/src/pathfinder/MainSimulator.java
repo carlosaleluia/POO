@@ -99,8 +99,6 @@ public class MainSimulator extends EventSimulator{
 		for(i = 0 ; i < this.init_population ; i++) {
 			
 			a = new Individual(this,new LinkedList<Segment>());
-			a.current = new Point(this.initial.x, this.initial.y);
-			a.updatecomfort();
 			
 			death_param[0] = (1 - Math. log(1 - a.comfort))*param_death;
 			death_param[1] = 0;			
@@ -122,7 +120,7 @@ public class MainSimulator extends EventSimulator{
 			
 		}
 		
-		
+		System.out.println(this.list_individuals);
 		
 	}
 	
