@@ -16,11 +16,14 @@ public class Move extends Event{
 	
 	Grid grid;
 	
-	public Move(Individual i, Grid g, double[] par) {
+	public Move(Individual i, Grid g, double[] par, double present) {
 		individual=i;
 		grid=g;
 		individual.move_event=this;
-		time=individual.simulator.Generator(par);
+		time=individual.simulator.Generator(par)+present;
+	}
+	public Move(Individual i, Grid g, double[] par) {
+		this(i,g,par,0);
 	}
 	
 	@Override
@@ -39,7 +42,7 @@ public class Move extends Event{
 		}
 		individual.current=individual.list_segments.peekLast().end;
 		List<Event> next_events=new ArrayList<Event>(1);
-		Event aux=new Move(individual,grid,individual.simulator.move_param);
+		Event aux=new Move(individual,grid,individual.simulator.move_param,time);
 		if(aux.time()<individual.death_event.time() && aux.time()<individual.simulator.GetFinalInstant())
 			next_events.add(aux);
 		return next_events;

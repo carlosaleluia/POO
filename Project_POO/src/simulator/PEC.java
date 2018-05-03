@@ -45,8 +45,15 @@ public class PEC implements EventContainer{
 		return events.isEmpty();
 	}
 
+	
+	@Override
+	public int numberEvents() {
+		return events.size();
+	}
+	
 	@Override
 	public Event nextEvent() {
+		//System.out.println("TIME:"+events.peek().time());
 		return events.poll();
 	}
 	

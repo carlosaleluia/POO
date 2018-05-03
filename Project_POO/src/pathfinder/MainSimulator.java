@@ -67,7 +67,7 @@ public class MainSimulator extends EventSimulator{
 
 		this.StartSimulation();
 		//... redifinir PEC.isempty para se tiver 1 unico evento acabar
-		while(!container.isempty()) {
+		while(!HasOnlyObservation()) {
 			
 			 Next();
 		
@@ -116,6 +116,10 @@ public class MainSimulator extends EventSimulator{
 		
 		System.out.println(this.list_individuals);
 		
+	}
+	private boolean HasOnlyObservation() {
+		if (container.numberEvents()<=1) return true;
+		else return false;
 	}
 	
 	

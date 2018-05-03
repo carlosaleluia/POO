@@ -15,12 +15,15 @@ public class Reproduction extends Event{
 	LinkedList<Individual> individual_list;
 	Grid grid;
 	
-	public Reproduction(Individual i, LinkedList<Individual> l, Grid g, double[] par) {
+	public Reproduction(Individual i, LinkedList<Individual> l, Grid g, double[] par, double present) {
 		individual=i;
 		individual_list=l;
 		grid=g;
 		individual.reproduction_event=this;
-		time=individual.simulator.Generator(par);
+		time=individual.simulator.Generator(par)+present;
+	}
+	public Reproduction(Individual i, LinkedList<Individual> l, Grid g, double[] par) {
+		this(i,l,g,par,0);
 	}
 
 	@Override
@@ -39,16 +42,16 @@ public class Reproduction extends Event{
 		
 		individual_list.add(newborn);
 		List<Event> next_events=new ArrayList<Event>(4);
-		Event aux=new Reproduction(individual,individual_list,grid,individual.simulator.reproduction_param);
+		Event aux=new Reproduction(individual,individual_list,grid,individual.simulator.reproduction_param,time);
 		if(aux.time()<individual.death_event.time() && aux.time()<individual.simulator.GetFinalInstant())
 			next_events.add(aux);
-		aux=new Death(newborn,individual_list,individual.simulator.death_param);
+		aux=new Death(newborn,individual_list,individual.simulator.death_param,time);
 		if(aux.time()<individual.simulator.GetFinalInstant())
 			next_events.add(aux);
-		aux=new Reproduction(newborn,individual_list,grid,individual.simulator.reproduction_param);
+		aux=new Reproduction(newborn,individual_list,grid,individual.simulator.reproduction_param,time);
 		if(aux.time()<newborn.death_event.time() && aux.time()<individual.simulator.GetFinalInstant())
 			next_events.add(aux);
-		aux=new Move(newborn,grid,individual.simulator.move_param);
+		aux=new Move(newborn,grid,individual.simulator.move_param,time);
 		if(aux.time()<newborn.death_event.time() && aux.time()<individual.simulator.GetFinalInstant())
 			next_events.add(aux);
 		return next_events;
