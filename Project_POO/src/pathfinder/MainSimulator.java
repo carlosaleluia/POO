@@ -89,12 +89,9 @@ public class MainSimulator extends EventSimulator{
 		Reproduction r;
 		Observation o;
 		Move m;
-		
-	
-		
+				
 		o = new Observation(this,this.list_individuals);
-		this.container.addEvent(o);
-		
+		this.container.addEvent(o);		
 		
 		for(i = 0 ; i < this.init_population ; i++) {
 			
@@ -109,9 +106,6 @@ public class MainSimulator extends EventSimulator{
 			move_param[0] = (1 - Math. log(1 - a.comfort))*param_move;
 			move_param[1] = 0;
 			m = new Move(a,this.Map,move_param);
-		    a.death_event = d;
-		    a.reproduction_event = r;
-		    a.move_event = m;	
 			this.list_individuals.add(a);
 			this.container.addEvent(d);
 			this.container.addEvent(r);
