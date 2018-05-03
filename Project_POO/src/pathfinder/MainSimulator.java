@@ -17,7 +17,6 @@ public class MainSimulator extends EventSimulator{
 	boolean final_point_hit;
 	
 	Grid Map;
-	PEC pec;
 	LinkedList<Individual> list_individuals;
 	
 	Individual the_best;
@@ -41,6 +40,9 @@ public class MainSimulator extends EventSimulator{
 		this.param_move = r.param_move;
 		this.param_reproduce = r.param_reproduce;
 		this.nb_events_done = 0;
+				
+		this.container = new PEC(3* this.max_population); 
+		this.list_individuals = new LinkedList<Individual>();
 		
 		death_param = new double[2];
 		reproduction_param = new double[2];
@@ -86,11 +88,10 @@ public class MainSimulator extends EventSimulator{
 		Observation o;
 		Move m;
 		
-		this.pec = new PEC(3* this.max_population); 
-		this.list_individuals = new LinkedList<Individual>();
+	
 		
 		o = new Observation(this,this.list_individuals);
-		this.pec.addEvent(o);
+		this.container.addEvent(o);
 		
 		
 		for(i = 0 ; i < this.init_population ; i++) {
