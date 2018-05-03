@@ -21,11 +21,6 @@ public class Death extends Event{
 	
 	@Override
 	protected List<Event> doEvent() {
-		IndividualComparatorByComfort comp=new IndividualComparatorByComfort();
-		if(comp.compare(individual.simulator.the_best, individual)>0) {
-			//CLONE
-			//individual.simulator.the_best=individual;
-		}
 		individual_list.remove(individual);
 		return null;
 	}

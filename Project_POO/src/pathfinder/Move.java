@@ -5,6 +5,7 @@ import simulator.Event;
 import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Move extends Event{
 
@@ -26,6 +27,15 @@ public class Move extends Event{
 	protected List<Event> doEvent() {
 		Point position=individual.list_segments.peekLast().end;
 		LinkedList<Segment> seglist=grid.ValidSegments(position);
+		Random random=new Random();
+		Segment new_segment=seglist.get(random.nextInt(seglist.size()));
+		individual.list_segments.add(new_segment);
+		individual.updatecomfort();
+		IndividualComparatorByComfort comp=new IndividualComparatorByComfort();
+		if(comp.compare(individual.simulator.the_best, individual)>0) {
+			//CLONE
+			//individual.simulator.the_best=individual;
+		}
 		
 		
 		List<Event> next_events=new ArrayList<Event>(1);
