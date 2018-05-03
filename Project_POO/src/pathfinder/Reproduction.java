@@ -4,6 +4,7 @@ import simulator.Event;
 
 import java.util.LinkedList;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Reproduction extends Event{
@@ -24,9 +25,13 @@ public class Reproduction extends Event{
 
 	@Override
 	protected List<Event> doEvent() {		
-		
-		//Individual(float c, int c_c, int c_n, Point d, Point current)
-		Individual newborn=null;
+		int length_new=(int)Math.ceil(individual.list_segments.size()*(0.9+0.1*individual.comfort));
+		LinkedList<Segment> newborn_list=new LinkedList<Segment>();
+		int k=0;
+		for(Iterator<Segment> i=individual.list_segments.iterator();k<length_new;++k) {
+			newborn_list.add(i.next());
+		}
+		Individual newborn=new Individual(individual.simulator, newborn_list);
 		
 		individual_list.add(newborn);
 		List<Event> next_events=new ArrayList<Event>(4);
