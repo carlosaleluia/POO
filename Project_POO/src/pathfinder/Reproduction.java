@@ -55,21 +55,20 @@ public class Reproduction extends Event{
 	//	System.out.println(newborn.current_cost);
 	//	System.out.println(newborn.printpath());
 		List<Event> next_events=new ArrayList<Event>(4);
-		double[] aux1 = new double[2];
+		double[] aux1 = new double[1];
 		aux1[0] = individual.reproduce_p;
-		aux1[1] = 0;
 		Event aux=new Reproduction(individual,individual_list,grid,aux1,time);
 		if(aux.time()<individual.death_event.time() && aux.time()<individual.simulator.GetFinalInstant())
 			next_events.add(aux);
-		aux1[0] = individual.death_p;
+		aux1[0] = newborn.death_p;
 		aux=new Death(newborn,individual_list,aux1,time);
 		if(aux.time()<individual.simulator.GetFinalInstant())
 			next_events.add(aux);
-		aux1[0] = individual.reproduce_p;
+		aux1[0] = newborn.reproduce_p;
 		aux=new Reproduction(newborn,individual_list,grid,aux1,time);
 		if(aux.time()<newborn.death_event.time() && aux.time()<individual.simulator.GetFinalInstant())
 			next_events.add(aux);
-		aux1[0] = individual.move_p;
+		aux1[0] = newborn.move_p;
 		aux=new Move(newborn,grid,aux1,time);
 		if(aux.time()<newborn.death_event.time() && aux.time()<individual.simulator.GetFinalInstant())
 			next_events.add(aux);

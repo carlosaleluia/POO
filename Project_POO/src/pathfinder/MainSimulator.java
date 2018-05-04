@@ -83,8 +83,7 @@ public class MainSimulator extends EventSimulator{
 		Move m;
 		
 		double[] aux;
-		aux = new double[2];
-		aux[1] = 0;
+		aux = new double[1];
 				
 		o = new Observation(this,this.list_individuals);
 		this.container.addEvent(o);		
@@ -93,7 +92,7 @@ public class MainSimulator extends EventSimulator{
 			
 			a = new Individual(this,new LinkedList<Segment>());			
 			aux[0] = a.death_p;		
-			d = new Death(a,this.list_individuals, aux );
+			d = new Death(a,this.list_individuals, aux);
 			aux[0] = a.reproduce_p;
 			r = new Reproduction(a,this.list_individuals,this.Map,aux);
 			aux[0] = a.move_p;
