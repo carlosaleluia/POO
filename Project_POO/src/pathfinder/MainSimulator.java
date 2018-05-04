@@ -1,8 +1,11 @@
 package pathfinder;
 
 import java.util.LinkedList;
+import java.util.ListIterator;
 
+import generator.GenerateNumber;
 import generator.ExpRandom;
+import generator.UnifRandom;
 import simulator.EventSimulator;
 import simulator.PEC;
 
@@ -66,12 +69,12 @@ public class MainSimulator extends EventSimulator{
 
 		this.StartSimulation();
 		while(!HasOnlyObservation()) {
-			
-			 Next();
-		
-		//	if(this.list_individuals.size() > this.max_population) {
-				//EPIDEMIAAAAAA
-		//	}
+
+			Next();
+
+			if(this.list_individuals.size() > this.max_population) {
+				Epidemics();
+			}
 			
 		}
 		
@@ -112,7 +115,8 @@ public class MainSimulator extends EventSimulator{
 				this.container.addEvent(r);
 			if(m.time()<a.death_event.time() && m.time()<GetFinalInstant())
 				this.container.addEvent(m);				
-		}				
+		}	
+
 	}
 	private boolean HasOnlyObservation() {
 		if (container.numberEvents()<=1) return true;
@@ -120,8 +124,24 @@ public class MainSimulator extends EventSimulator{
 	}
 	
 	public void Epidemics() {
-		
+		list_individuals.sort(new IndividualComparatorByComfort());
+		GenerateNumber unif=new UnifRandom();
+		double[] survive=new double[2];
+		survive[0]=0;
+		survive[1]=1;
+		Individual sick;
+		ListIterator<Individual> ind_it = list_individuals.listIterator(5);
+		while(ind_it.hasNext()){
+			sick=ind_it.next();
+			if(unif.Generate(survive)>sick.comfort) {
+				if(sick.move_event.time()<sick.death_event.time() && sick.move_event.time()<final_instant) 
+					container.removeEvent(sick.move_event);
+				if(sick.reproduction_event.time()<sick.death_event.time()&& sick.reproduction_event.time()<final_instant) 
+					container.removeEvent(sick.reproduction_event);
+				if(sick.death_event.time()<final_instant)
+					container.removeEvent(sick.reproduction_event);
+				ind_it.remove();
+			}
+		}
 	}
-	
-
 }
