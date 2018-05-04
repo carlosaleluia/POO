@@ -65,7 +65,11 @@ public class Move extends Event{
 		}
 
 		List<Event> next_events=new ArrayList<Event>(1);
-		Event aux=new Move(individual,grid,individual.simulator.move_param,time);
+		double[] aux1;
+		aux1 = new double[2];
+		aux1[0] = individual.move_p;
+		aux1[1] = 0;
+		Event aux=new Move(individual,grid,aux1,time);
 		if(aux.time()<individual.death_event.time() && aux.time()<individual.simulator.GetFinalInstant()) {
 			next_events.add(aux);
 	//		System.out.println("TIME D:"+individual.death_event.time());

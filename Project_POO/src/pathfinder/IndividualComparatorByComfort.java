@@ -2,7 +2,6 @@ package pathfinder;
 
 import java.util.Comparator;
 
-import simulator.Event;
 
 public class IndividualComparatorByComfort implements Comparator<Individual>{
 	

@@ -17,13 +17,11 @@ public class MainSimulator extends EventSimulator{
 	final int comfortsens; // Comfort Parameter
 	final int param_death, param_move, param_reproduce;	//Parameters for number generator
 	final Point initial, destination; // Initial and Final Point
-	double[] death_param, move_param, reproduction_param;
 	
 	boolean final_point_hit;
 	
 	Grid Map;
-	LinkedList<Individual> list_individuals;
-	
+	LinkedList<Individual> list_individuals;	
 	Individual the_best;
 	
 	public MainSimulator(String s) {				
@@ -51,10 +49,7 @@ public class MainSimulator extends EventSimulator{
 		this.list_individuals = new LinkedList<Individual>();
 		this.the_best = new Individual(this,new LinkedList<Segment>());
 		this.the_best.current = new Point(this.initial.x,this.initial.y);
-		
-		death_param = new double[2];
-		reproduction_param = new double[2];
-		move_param = new double[2];		
+	
 	}
 	
 	
@@ -69,18 +64,12 @@ public class MainSimulator extends EventSimulator{
 
 		this.StartSimulation();
 		while(!HasOnlyObservation()) {
-
 			Next();
-
 			if(this.list_individuals.size() > this.max_population) {
 				Epidemics();
-			}
-			
-		}
-		
-		System.out.println("Path of the best fit individual = " + this.the_best.printpath());
-		
-		
+			}			
+		}		
+		System.out.println("Path of the best fit individual = " + this.the_best.printpath());		
 	}
 	
 	@Override
@@ -92,23 +81,23 @@ public class MainSimulator extends EventSimulator{
 		Reproduction r;
 		Observation o;
 		Move m;
+		
+		double[] aux;
+		aux = new double[2];
+		aux[1] = 0;
 				
 		o = new Observation(this,this.list_individuals);
 		this.container.addEvent(o);		
 		
 		for(i = 0 ; i < this.init_population ; i++) {
 			
-			a = new Individual(this,new LinkedList<Segment>());
-			
-			death_param[0] = (1 - Math. log(1 - a.comfort))*param_death;
-			death_param[1] = 0;			
-			d = new Death(a,this.list_individuals, death_param );
-			reproduction_param[0] = (1 - Math. log(1 - a.comfort))*param_reproduce;
-			reproduction_param[1] = 0;	
-			r = new Reproduction(a,this.list_individuals,this.Map,reproduction_param);
-			move_param[0] = (1 - Math. log(1 - a.comfort))*param_move;
-			move_param[1] = 0;
-			m = new Move(a,this.Map,move_param);
+			a = new Individual(this,new LinkedList<Segment>());			
+			aux[0] = a.death_p;		
+			d = new Death(a,this.list_individuals, aux );
+			aux[0] = a.reproduce_p;
+			r = new Reproduction(a,this.list_individuals,this.Map,aux);
+			aux[0] = a.move_p;
+			m = new Move(a,this.Map,aux);
 			this.list_individuals.add(a);
 			this.container.addEvent(d);
 			if(r.time()<a.death_event.time() && r.time()<GetFinalInstant())

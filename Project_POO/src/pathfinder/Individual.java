@@ -18,6 +18,10 @@ class Individual {
 	Move move_event;
 	boolean has_reached;
 	
+	double death_p;
+	double move_p;
+	double reproduce_p;
+	
 	Individual(MainSimulator m, LinkedList<Segment> list_segments) {		
 		this.simulator = m;
 		this.list_segments = list_segments;
@@ -40,6 +44,10 @@ class Individual {
 		//a = Math.pow(simulator.comfortsens,(1 - ((current_cost - current_nbsegments + 2)/((simulator.comfortsens - 1)*current_nbsegments + 3))));
 		//b = Math.pow(simulator.comfortsens,(1-(this.findpath())/ (simulator.n + simulator.m + 1)));
 		this.comfort = (float) (a* b);
+		
+		this.death_p = (1 - Math. log(1 - this.comfort))*this.simulator.param_death;
+		this.move_p = (1 - Math. log(1 - this.comfort))*this.simulator.param_move;
+		this.reproduce_p = (1 - Math. log(1 - this.comfort))*this.simulator.param_reproduce;
 	}
 	
 	
