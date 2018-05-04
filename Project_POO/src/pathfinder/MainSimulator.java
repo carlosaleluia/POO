@@ -136,7 +136,7 @@ public class MainSimulator extends EventSimulator{
 			if(unif.Generate(survive)>sick.comfort) {
 				if(sick.move_event.time()<sick.death_event.time() && sick.move_event.time()<final_instant) 
 					container.removeEvent(sick.move_event);
-				if(sick.reproduction_event.time()<sick.death_event.time()&& sick.reproduction_event.time()<final_instant) 
+				if(sick.reproduction_event.time()<sick.death_event.time() && sick.reproduction_event.time()<final_instant) 
 					container.removeEvent(sick.reproduction_event);
 				if(sick.death_event.time()<final_instant)
 					container.removeEvent(sick.reproduction_event);
