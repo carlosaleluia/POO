@@ -98,7 +98,7 @@ public class MainSimulator extends EventSimulator{
 			death_param[0] = (1 - Math. log(1 - a.comfort))*param_death;
 			death_param[1] = 0;			
 			d = new Death(a,this.list_individuals, death_param );
-			reproduction_param[0] = (1 - Math. log(1 - a.comfort))*10;
+			reproduction_param[0] = (1 - Math. log(1 - a.comfort))*param_reproduce;
 			reproduction_param[1] = 0;	
 			r = new Reproduction(a,this.list_individuals,this.Map,reproduction_param);
 			move_param[0] = (1 - Math. log(1 - a.comfort))*param_move;
@@ -106,8 +106,10 @@ public class MainSimulator extends EventSimulator{
 			m = new Move(a,this.Map,move_param);
 			this.list_individuals.add(a);
 			this.container.addEvent(d);
-			this.container.addEvent(r);
-			this.container.addEvent(m);				
+			if(r.time()<a.death_event.time() && r.time()<GetFinalInstant())
+				this.container.addEvent(r);
+			if(m.time()<a.death_event.time() && m.time()<GetFinalInstant())
+				this.container.addEvent(m);				
 		}				
 	}
 	private boolean HasOnlyObservation() {

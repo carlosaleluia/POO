@@ -2,11 +2,11 @@ package pathfinder;
 
 public class Point {
 	
-	public int x;   // the real part
-    public int y;   // the imaginary part
+	int x;   
+    int y;   
 	
 	public Point(int x, int y) {
-		this.x =x;
+		this.x=x;
 		this.y=y;
 	}
 

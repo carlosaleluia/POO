@@ -15,6 +15,10 @@ class Segment {
 	int getCost() {
 		return this.cost;
 	}
+	
+	public String toString() {
+		return start.toString()+end.toString();
+	}
 
 	
 }

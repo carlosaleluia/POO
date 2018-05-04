@@ -26,6 +26,7 @@ public class Observation extends Event{
 	
 	@Override
 	protected List<Event> doEvent() {
+		//System.out.println("OBSER");
 		individual_list.sort(new IndividualComparatorByComfort());
 		IndividualComparatorByPath comp=new IndividualComparatorByPath();
 		if(!individual_list.isEmpty()) {
