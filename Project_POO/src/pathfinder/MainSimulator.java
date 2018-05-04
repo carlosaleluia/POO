@@ -75,6 +75,8 @@ public class MainSimulator extends EventSimulator{
 			
 		}
 		
+		System.out.println("Path of the best fit individual = " + this.the_best.printpath());
+		
 		
 	}
 	
@@ -95,7 +97,7 @@ public class MainSimulator extends EventSimulator{
 			
 			a = new Individual(this,new LinkedList<Segment>());
 			
-			death_param[0] = (1 - Math. log(1 - a.comfort))*1000000;
+			death_param[0] = (1 - Math. log(1 - a.comfort))*param_death;
 			death_param[1] = 0;			
 			d = new Death(a,this.list_individuals, death_param );
 			reproduction_param[0] = (1 - Math. log(1 - a.comfort))*param_reproduce;

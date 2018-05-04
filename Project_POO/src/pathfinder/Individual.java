@@ -102,18 +102,18 @@ class Individual {
 
 	public String printpath() {
 	Iterator<Segment> listIt = list_segments.iterator();
-	String result = "";
+	String result = "{";
 	Segment temp = null;
 	while(listIt.hasNext())
 	{
 		temp = listIt.next();	
-		result=result.concat(temp.start.toString());
+		result=result.concat(temp.start.toString() + ",");
 	}
 	/*if(temp == null) {
 		result=result.concat(current.toString());
 		//result = result + current;
 	}*/
-	result=result.concat(current.toString()); 
+	result=result.concat(current.toString() + "}"); 
 	/*System.out.println("PRINTING2");
 	System.out.println(current.toString());
 	System.out.println(result.concat(current.toString()));

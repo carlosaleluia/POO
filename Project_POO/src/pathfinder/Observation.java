@@ -35,9 +35,9 @@ public class Observation extends Event{
 			}
 		}
 		
-		String y_n;
-		if(simulator.final_point_hit) y_n="yes";
-		else y_n="no";
+		String y_n, spec;
+		if(simulator.final_point_hit) { y_n="yes"; spec = "Cost:";}
+		else {y_n="no"; spec = "Comfort:";}
 		double c_c;
 		if(simulator.the_best.has_reached) c_c=simulator.the_best.current_cost;
 		else c_c=simulator.the_best.comfort;
@@ -48,7 +48,7 @@ public class Observation extends Event{
 		System.out.println("\tPopulation size:                 "+individual_list.size());
 		System.out.println("\tFinal point has been hit:        "+y_n);
 		System.out.println("\tPath of the best fit individual: "+simulator.the_best.printpath());
-		System.out.println("\tCost/Comfort:                    "+c_c);
+		System.out.println("\t"+spec+"                           "+c_c);
 		List<Event> next_events=new ArrayList<Event>(1);
 		if(observation_number<19) {
 			next_events.add(new Observation(observation_number+1,simulator,individual_list));
