@@ -25,7 +25,6 @@ class Individual {
 		
 		if(list_segments.isEmpty()) {
 			current = new Point(simulator.initial.x,simulator.initial.y);
-			this.has_reached = false;
 		}
 		else {
 			current = new Point(list_segments.getLast().end.x,list_segments.getLast().end.y);
@@ -69,36 +68,36 @@ class Individual {
 				cycle = true;
 				continue;
 			}
-			if(cycle == true) {
-				this.current_cost = current_cost - temp.cost;
-				this.current_nbsegments--;
+			if(cycle == true) {				
 				listIt.remove();
 			}			
 		}				
 		if(cycle == false) {			
-			this.list_segments.add(nextseg);
-			this.current_cost = current_cost + nextseg.cost;
-			this.current_nbsegments++;			
+			this.list_segments.add(nextseg);		
 		}
 		if (nextseg.end.equals(this.simulator.initial)) {
-			this.current_cost = 0;
-			this.current_nbsegments = 0;
-			this.list_segments.removeAll(list_segments);
-			
+			this.list_segments.removeAll(list_segments);		
 		}
-		this.current = nextseg.end;
-				
+		this.current = nextseg.end;		
+		calculatecostnbsegments();
+		
 		return cycle;
 	}
 	
 	void calculatecostnbsegments() {		
-		ListIterator<Segment> listIt = list_segments.listIterator(list_segments.size());				
+		ListIterator<Segment> listIt = list_segments.listIterator(0);
+		this.current_cost = 0;
+		this.current_nbsegments = 0;
+		this.has_reached = false;
 		while(listIt.hasNext())
 		{
 			Segment temp = listIt.next();						
-			current_cost = current_cost + temp.cost;
+			this.current_cost = this.current_cost + temp.cost;
 			current_nbsegments++;
-		}										
+			if(temp.end.equals(this.simulator.destination)) {
+				this.has_reached = true;
+			}
+		}
 	}
 
 	public String printpath() {

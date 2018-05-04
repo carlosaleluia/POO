@@ -45,14 +45,15 @@ public class Reproduction extends Event{
 			}
 		}
 		Individual newborn=new Individual(individual.simulator, newborn_list);
+		
 		individual_list.add(newborn);
-		/*System.out.println("REPRODUCTION:");
-		System.out.println("FATHER:");
-		System.out.println(individual.comfort);
-		System.out.println(individual.printpath());
-		System.out.println("SON:");
-		System.out.println(newborn.comfort);
-		System.out.println(newborn.printpath());*/
+	//	System.out.println("REPRODUCTION:");
+	//	System.out.println("FATHER:");
+	//	System.out.println(individual.current_cost);
+		//System.out.println(individual.printpath());
+	//	System.out.println("SON:");
+	//	System.out.println(newborn.current_cost);
+	//	System.out.println(newborn.printpath());
 		List<Event> next_events=new ArrayList<Event>(4);
 		Event aux=new Reproduction(individual,individual_list,grid,individual.simulator.reproduction_param,time);
 		if(aux.time()<individual.death_event.time() && aux.time()<individual.simulator.GetFinalInstant())
