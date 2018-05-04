@@ -47,6 +47,7 @@ public class MainSimulator extends EventSimulator{
 		this.generator = new ExpRandom();
 		this.list_individuals = new LinkedList<Individual>();
 		this.the_best = new Individual(this,new LinkedList<Segment>());
+		this.the_best.current = new Point(this.initial.x,this.initial.y);
 		
 		death_param = new double[2];
 		reproduction_param = new double[2];
@@ -55,8 +56,6 @@ public class MainSimulator extends EventSimulator{
 	
 	
 	public void run(){
-		
-		System.out.println(Map);
 		
 		System.out.println("\nPARAMETERS READ FROM XML FILE: \n");
 		System.out.println("Final instant: " + this.final_instant + "\n");
@@ -99,7 +98,7 @@ public class MainSimulator extends EventSimulator{
 			death_param[0] = (1 - Math. log(1 - a.comfort))*param_death;
 			death_param[1] = 0;			
 			d = new Death(a,this.list_individuals, death_param );
-			reproduction_param[0] = (1 - Math. log(1 - a.comfort))*100;
+			reproduction_param[0] = (1 - Math. log(1 - a.comfort))*10;
 			reproduction_param[1] = 0;	
 			r = new Reproduction(a,this.list_individuals,this.Map,reproduction_param);
 			move_param[0] = (1 - Math. log(1 - a.comfort))*param_move;
@@ -108,16 +107,10 @@ public class MainSimulator extends EventSimulator{
 			this.list_individuals.add(a);
 			this.container.addEvent(d);
 			this.container.addEvent(r);
-			this.container.addEvent(m);	
-			System.out.println(a);
-			
-		}
-		
-		System.out.println(this.list_individuals);
-		
+			this.container.addEvent(m);				
+		}				
 	}
 	private boolean HasOnlyObservation() {
-		System.out.println("number events :" + container.numberEvents());
 		if (container.numberEvents()<=1) return true;
 		else return false;
 	}

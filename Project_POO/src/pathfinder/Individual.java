@@ -61,29 +61,32 @@ class Individual {
 		
 		ListIterator<Segment> listIt = list_segments.listIterator(0);
 		boolean cycle = false;
-		
-
-		System.out.println("Next segment" + nextseg.end);
 				
 		while(listIt.hasNext())
 		{
-			Segment temp = listIt.next();
-			System.out.println("iterate" + temp.end);
-			
+			Segment temp = listIt.next();			
 			if(temp.end.equals(nextseg.end)) {
 				cycle = true;
+				continue;
 			}
 			if(cycle == true) {
-				current_cost = current_cost - temp.cost;
-				current_nbsegments--;
+				this.current_cost = current_cost - temp.cost;
+				this.current_nbsegments--;
 				listIt.remove();
 			}			
 		}				
 		if(cycle == false) {			
-			list_segments.add(nextseg);
-			current_cost = current_cost + nextseg.cost;
-			current_nbsegments++;			
+			this.list_segments.add(nextseg);
+			this.current_cost = current_cost + nextseg.cost;
+			this.current_nbsegments++;			
 		}
+		if (nextseg.end.equals(this.simulator.initial)) {
+			this.current_cost = 0;
+			this.current_nbsegments = 0;
+			this.list_segments.removeAll(list_segments);
+			
+		}
+		this.current = nextseg.end;
 				
 		return cycle;
 	}
@@ -111,7 +114,7 @@ class Individual {
 		result=result.concat(current.toString());
 		//result = result + current;
 	}*/
-//	result=result.concat(current.toString()); ??? 
+	result=result.concat(current.toString()); 
 	/*System.out.println("PRINTING2");
 	System.out.println(current.toString());
 	System.out.println(result.concat(current.toString()));
@@ -128,7 +131,8 @@ public String toString() {
 }
 
 	
-	void copyIndividual(Individual i) {		
+	void copyIndividual(Individual i) {	
+		this.current = i.current;
 		this.current_cost = i.current_cost;
 		this.list_segments = i.list_segments;
 		this.has_reached = i.has_reached;

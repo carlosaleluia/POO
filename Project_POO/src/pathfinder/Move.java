@@ -36,23 +36,34 @@ public class Move extends Event{
 		Segment new_segment=seglist.get(random.nextInt(seglist.size()));
 		individual.checkcycles(new_segment);
 		individual.updatecomfort();
-		IndividualComparatorByPath comp=new IndividualComparatorByPath();
-		if(comp.compare(individual,individual.simulator.the_best)>0) {
-			individual.simulator.the_best.copyIndividual(individual);
-		}
+		
 		if(individual.list_segments.isEmpty()) {
 			individual.current = individual.simulator.initial;
 		}
 		else {
-			individual.current=individual.list_segments.peekLast().end;			
+			individual.current=individual.list_segments.peekLast().end;	
+			if(individual.list_segments.peekLast().end.equals(individual.simulator.destination)) {
+				individual.has_reached= true;
+				individual.simulator.final_point_hit = true;
+			}
 		}	
+		
+		
+		
+
+		IndividualComparatorByPath comp=new IndividualComparatorByPath();
+		if(comp.compare(individual,individual.simulator.the_best)>0) {
+			individual.simulator.the_best.copyIndividual(individual);
+		}
+
 		List<Event> next_events=new ArrayList<Event>(1);
 		Event aux=new Move(individual,grid,individual.simulator.move_param,time);
 		if(aux.time()<individual.death_event.time() && aux.time()<individual.simulator.GetFinalInstant()) {
 			next_events.add(aux);
-			System.out.println("TIME D:"+individual.death_event.time());
-			System.out.println("TIME M:"+aux.time());
+	//		System.out.println("TIME D:"+individual.death_event.time());
+	//		System.out.println("TIME M:"+aux.time());
 		}
+	//	System.out.println("Path: "+ individual.printpath() + "\n");
 		return next_events;
 	}
 
