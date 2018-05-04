@@ -34,8 +34,15 @@ public class Reproduction extends Event{
 		//System.out.println((int)Math.ceil(individual.list_segments.size()*(0.9+0.1*individual.comfort)));
 		//System.out.println(individual.comfort);
 		//System.out.println(individual.list_segments.size());
-		for(Iterator<Segment> i=individual.list_segments.iterator();k<length_new;++k) {
-			newborn_list.add(i.next());
+		if(!individual.list_segments.isEmpty()) {		
+			Iterator<Segment> i=individual.list_segments.iterator();
+			while(i.hasNext()) {				
+				newborn_list.add(i.next());
+				if(k == length_new) {
+					break;
+				}
+				k++;
+			}
 		}
 		Individual newborn=new Individual(individual.simulator, newborn_list);
 		individual_list.add(newborn);
