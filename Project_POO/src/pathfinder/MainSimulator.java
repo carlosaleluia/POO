@@ -111,7 +111,7 @@ public class MainSimulator extends EventSimulator{
 		else return false;
 	}
 	
-	public void Epidemics() {
+	void Epidemics() {
 		list_individuals.sort(new IndividualComparatorByComfort());
 		GenerateNumber unif=new UnifRandom();
 		double[] survive=new double[2];
