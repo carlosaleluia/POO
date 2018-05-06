@@ -126,7 +126,7 @@ public void startElement(String uri, String name, String tag, Attributes atts){
 		 }
 		 else if (tag.equals("specialcostzones")){
 			this.nbrzones = Integer.parseInt(atts.getValue(0));
-			if(this.nbrzones <= 0) { throw new Exception("Invalid number of zones");}
+			if(this.nbrzones < 0) { throw new Exception("Invalid number of zones");}
 			this.zones = new Point[nbrzones][2];
 			this.cost_zones = new int[nbrzones];
 		 }	
@@ -161,7 +161,7 @@ public void startElement(String uri, String name, String tag, Attributes atts){
 		 }
 		 else if (tag.equals("obstacles")){	
 			nbrobstacles = Integer.parseInt(atts.getValue(0));
-			if(this.nbrobstacles <= 0) { throw new Exception("Invalid number of obstacles");}
+			if(this.nbrobstacles < 0) { throw new Exception("Invalid number of obstacles");}
 			this.obstacles = new Point[nbrobstacles];
 		}
 		 else if (tag.equals("obstacle")){
