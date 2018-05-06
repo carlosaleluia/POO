@@ -13,11 +13,12 @@ class Grid {
 	}
 	
 	
-	void initializeGrid() {
+	int initializeGrid() {
 		
 		int i = 0, j = 0, t = 0;
 		int x=0, y=0;
 		int x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+		int max_cost=1;
 		
 		//Initialization
 		for(i=0;i<r.colsnb * r.rowsnb;i++) {
@@ -63,6 +64,9 @@ class Grid {
 			y1= r.zones[t][0].y;
 			x2= r.zones[t][1].x;
 			y2= r.zones[t][1].y;
+			if(r.cost_zones[t] > max_cost) {
+				max_cost = r.cost_zones[t];
+			}
 			for(x=1; x<=r.colsnb; x++) {
 				for(y=1; y<=r.rowsnb;y++) {	
 		
@@ -89,6 +93,7 @@ class Grid {
 				}
 			}									
 		}
+		return max_cost;
 	}
 	
 

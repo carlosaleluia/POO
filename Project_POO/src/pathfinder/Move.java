@@ -74,7 +74,6 @@ public class Move extends Event{
 	//		System.out.println("TIME D:"+individual.death_event.time());
 	//		System.out.println("TIME M:"+aux.time());
 		}
-	//	System.out.println("Path: "+ individual.printpath() + "\n");
 		return next_events;
 	}
 

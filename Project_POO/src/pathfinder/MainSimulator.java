@@ -12,7 +12,7 @@ import simulator.PEC;
 public class MainSimulator extends EventSimulator{
 	
 	
-	final int init_population, max_population;
+	final int init_population, max_population, max_cost_edge;
 	final int n, m; //n is the number of lines, m is the number of columns
 	final int comfortsens; // Comfort Parameter
 	final int param_death, param_move, param_reproduce;	//Parameters for number generator
@@ -29,7 +29,7 @@ public class MainSimulator extends EventSimulator{
 		r.readXML();		
 		
 		Map = new Grid(r);
-		Map.initializeGrid();
+		this.max_cost_edge = Map.initializeGrid();
 		
 		this.init_population = r.initpop;
 		this.max_population = r.maxpop;				
@@ -69,7 +69,7 @@ public class MainSimulator extends EventSimulator{
 				Epidemics();
 			}			
 		}		
-		System.out.println("Path of the best fit individual = " + this.the_best.printpath());		
+		System.out.println("Path of the best fit individual = " + this.the_best.printpath());	
 	}
 	
 	@Override

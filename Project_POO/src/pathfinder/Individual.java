@@ -39,12 +39,12 @@ class Individual {
 	
 	void updatecomfort(){
 		double a,b;
-		a = Math.pow((1 - ((current_cost - current_nbsegments + 2)/((simulator.comfortsens - 1)*current_nbsegments + 3))),simulator.comfortsens);
-		b = Math.pow((1-(this.findpath())/ (simulator.n + simulator.m + 1)),simulator.comfortsens);
-		//a = Math.pow(simulator.comfortsens,(1 - ((current_cost - current_nbsegments + 2)/((simulator.comfortsens - 1)*current_nbsegments + 3))));
-		//b = Math.pow(simulator.comfortsens,(1-(this.findpath())/ (simulator.n + simulator.m + 1)));
-		this.comfort = (float) (a* b);
-		
+		a = Math.pow(1 - (1.0*(current_cost - current_nbsegments + 2)/((simulator.max_cost_edge - 1)*current_nbsegments + 3)),simulator.comfortsens);
+		b = Math.pow(1-(this.findpath()/ (simulator.n + simulator.m + 1)),simulator.comfortsens);
+		this.comfort = (float) (a*b);
+		if(this.comfort < 0) {
+			this.comfort = 0;
+		}		
 		this.death_p = (1 - Math. log(1 - this.comfort))*this.simulator.param_death;
 		this.move_p = (1 - Math. log(1 - this.comfort))*this.simulator.param_move;
 		this.reproduce_p = (1 - Math. log(1 - this.comfort))*this.simulator.param_reproduce;
@@ -88,7 +88,6 @@ class Individual {
 		}
 		this.current = nextseg.end;		
 		calculatecostnbsegments();
-		
 		return cycle;
 	}
 	
@@ -141,6 +140,7 @@ public String toString() {
 	void copyIndividual(Individual i) {	
 		this.current = i.current;
 		this.current_cost = i.current_cost;
+		this.current_nbsegments = i.current_nbsegments;
 		this.list_segments = new LinkedList<Segment>(i.list_segments);
 		this.has_reached = i.has_reached;
 		this.comfort = i.comfort;				
