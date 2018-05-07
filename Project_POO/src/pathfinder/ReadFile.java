@@ -2,15 +2,9 @@ package pathfinder;
 
 import java.io.File;
 import java.io.IOException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXNotRecognizedException;
-import org.xml.sax.helpers.DefaultHandler;
+import javax.xml.parsers.*;
+import org.xml.sax.*;
+import org.xml.sax.helpers.*;
 
 public class ReadFile extends DefaultHandler {
 	
@@ -229,7 +223,7 @@ public void characters(char[]ch,int start,int length){
 		 fact.setValidating(true); 
 		 SAXParser saxParser = fact.newSAXParser();
 
-		 // parse the XML document with this handler
+		 //Parse the XML document with this handler
 		 DefaultHandler handler = this;			 
 		 saxParser.parse(new File(this.FileName), handler); 
 		 
@@ -238,10 +232,28 @@ public void characters(char[]ch,int start,int length){
 		 }
 		 catch(IOException e) {System.err.println("IO error");System.exit(1);} 
 		 catch(SAXException e) {System.err.println("Parser error"); System.exit(1);} 
-		 catch(ParserConfigurationException e) { System.err.println("Parser configuration error"); System.exit(1);} 
+		 catch(ParserConfigurationException e) { System.err.println("Parser configuration error"); System.exit(1);}
 		 catch (Exception a) {System.err.println(a.getMessage()); System.exit(1); }		 
 	 }
 
-
-
+		  
+		  public void error(SAXParseException exception) {		     
+		    System.err.println("Error: " + exception.getMessage());
+		    System.err.println(" at line " + exception.getLineNumber() 
+		     + ", column " + exception.getColumnNumber());
+		    System.err.println(" in entity " + exception.getSystemId());
+		    System.exit(1);
+		    
+		  }
+		  
+		  public void fatalError(SAXParseException exception) {
+		     
+		    System.err.println("Fatal Error: " + exception.getMessage());
+		    System.err.println(" at line " + exception.getLineNumber() 
+		     + ", column " + exception.getColumnNumber()); 
+		    System.err.println(" in entity " + exception.getSystemId());
+		    System.exit(1);
+		     
+		  }	 
+	 
 }

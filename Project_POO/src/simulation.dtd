@@ -15,19 +15,19 @@
 
 <!ELEMENT initialpoint EMPTY>
 <!ATTLIST initialpoint
-  xinicial CDATA #REQUIRED
-  yinicial CDATA #REQUIRED>
+  xinitial CDATA #REQUIRED
+  yinitial CDATA #REQUIRED>
 
 <!ELEMENT finalpoint EMPTY>
 <!ATTLIST finalpoint
   xfinal CDATA #REQUIRED
   yfinal CDATA #REQUIRED>
 
-<!ELEMENT specialcostzones (zone)>
+<!ELEMENT specialcostzones (zone)*>
 <!ATTLIST specialcostzones
   num CDATA #REQUIRED>
 
-<!ELEMENT obstacles (obstacle)+>
+<!ELEMENT obstacles (obstacle)*>
 <!ATTLIST obstacles
   num CDATA #REQUIRED>
 
@@ -37,9 +37,9 @@
 <!ELEMENT zone (#PCDATA)>
 <!ATTLIST zone
   xfinal CDATA #REQUIRED
-  xinicial CDATA #REQUIRED
+  xinitial CDATA #REQUIRED
   yfinal CDATA #REQUIRED
-  yinicial CDATA #REQUIRED>
+  yinitial CDATA #REQUIRED>
 
 <!ELEMENT obstacle EMPTY>
 <!ATTLIST obstacle
