@@ -6,13 +6,28 @@ class Grid {
 	
 	int[][] Map;
 	ReadFile r;
-	
+		
+	/**
+	 * This method is the constructor of the Grid Class.
+	 * @param  r   ReadFile object with all the informations needed to build the map
+	 * @see ReadFile
+	 */
 	public Grid(ReadFile r) {		
 		Map = new int[r.colsnb * r.rowsnb][4];	
 	    this.r = r;
 	}
 	
-	
+	/**
+	 * This method reads the specifications of the map obtained 
+	 * from the XML and builds a Map.
+	 * A Map is represented by a 2D int vector, in which the first
+	 * dimension represents the index of the point on the grid and 
+	 * the second dimension represents it's four adjacent segments.
+	 * 0 - Left, 1 - Up, 2 - Right, 3- Down 
+	 * For example, the Map[13][2] stores the value of the segment on the right
+	 * of point 13.
+	 * @return      Maximum cost in the grid
+	 */
 	int initializeGrid() {
 		
 		int i = 0, j = 0, t = 0;
@@ -95,7 +110,10 @@ class Grid {
 		return max_cost;
 	}
 	
-
+	/**
+	 * This method is an override of the toString method() to print the contents of the map.
+	 * @return  Map information
+	 */
 	@Override
 	public String toString() {
 		int i = 0 , j = 0;
@@ -110,16 +128,39 @@ class Grid {
 		return print;
 	}
 	
-	
+	/**
+	 * This method sets a value in the Map.
+	 * @param  x   Coordinate x of the point
+	 * @param y Coordinate y of the point
+	 * @param index (up,down,left,right)
+	 * @param value Value to be inserted
+	 */
 	public void setValue(int x, int y, int index, int value) {
 		Map[(y-1)*r.colsnb + (x-1)][index] = value;
 	}
 	
+	/**
+	 * This method returns a value in the Map.
+	 * @param  x   Coordinate x of the point
+	 * @param y Coordinate y of the point
+	 * @param index (up,down,left,right)
+	 * @return Value on that position
+	 */
 	public int getValue(int x, int y, int index) {
 		return Map[(y-1)*r.colsnb + (x-1)][index];
 	}
 	
 	
+	/**
+	 * This method receives a point, and returns the linked list of valid segments for which the individual can travel. <p>
+	 * This is done by checking the map at the index of the point and evaluating all the four segments. 
+	 * If the cost of the segment is different than zero, than the segment is added to the list.
+	 * @param A current point of the individual
+	 * @return  Linked List of Segments
+	 * @see Point
+	 * @see Segment 
+	 * @see Individual
+	 */
 	LinkedList<Segment> ValidSegments(Point A) {
 		
 		LinkedList<Segment> seglist = new LinkedList<Segment>();
@@ -137,10 +178,7 @@ class Grid {
 			seglist.add(new Segment(new Point(A.x,A.y),new Point(A.x,A.y-1), getValue(A.x,A.y,3)));
 		}
 		return seglist;
-	}
-	
-	
-	
+	}	
 
 }
 

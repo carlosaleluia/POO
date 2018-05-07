@@ -13,7 +13,7 @@ public class Main{
 		  //  }
 		// String document = args[0];
 		
-		MainSimulator simulator = new MainSimulator("test_xml.xml");	
+		MainSimulator simulator = new MainSimulator("test_1.xml");	
 		
 		simulator.run();		
 	}
