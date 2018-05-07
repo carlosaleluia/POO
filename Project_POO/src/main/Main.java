@@ -6,7 +6,7 @@ public class Main{
 	
 	public static void main(String[] args) throws Exception {
 		
-		MainSimulator simulator = new MainSimulator("test_1.xml");		
+		MainSimulator simulator = new MainSimulator("test_xml.xml");		
 		simulator.run();		
 	}
 }

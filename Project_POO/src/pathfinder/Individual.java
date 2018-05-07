@@ -46,8 +46,8 @@ class Individual {
 			this.comfort = 0;
 		}		
 		this.death_p = (1 - Math. log(1 - this.comfort))*this.simulator.param_death;
-		this.move_p = (1 - Math. log(1 - this.comfort))*this.simulator.param_move;
-		this.reproduce_p = (1 - Math. log(1 - this.comfort))*this.simulator.param_reproduce;
+		this.move_p = (1 - Math. log(this.comfort))*this.simulator.param_move;
+		this.reproduce_p = (1 - Math. log(this.comfort))*this.simulator.param_reproduce;
 	}
 	
 	
