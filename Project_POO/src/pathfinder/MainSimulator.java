@@ -22,6 +22,9 @@ public class MainSimulator extends EventSimulator{
 	
 	Grid Map;
 	LinkedList<Individual> list_individuals;	
+	/**
+	 * Best individual so far: highest comfort if final point has not been hit and lowest cost otherwise.
+	 */
 	Individual the_best;
 	
 	public MainSimulator(String s) {				

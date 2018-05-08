@@ -8,11 +8,26 @@ import java.util.List;
 
 public class Observation extends Event{
 	
+	/**
+	 * Observation number (1-19)
+	 */
 	int observation_number;
+	/**
+	 * MainSimulator where simulation is being run.
+	 */
 	MainSimulator simulator;
+	/**
+	 * List of alive individuals.
+	 */
 	LinkedList<Individual> individual_list;
 
 	
+	/**
+	 * Constructor of next observation during simulation.
+	 * @param nb observation number
+	 * @param s MainSimulator where simulation is being run.
+	 * @param l list of alive individuals.
+	 */
 	public Observation(int nb, MainSimulator s, LinkedList<Individual> l) {
 		observation_number=nb;
 		simulator=s;
@@ -20,13 +35,27 @@ public class Observation extends Event{
 		time=(double)(observation_number*simulator.GetFinalInstant()/20);
 	}
 	
+	/**
+	 * Constructor of first observation.
+	 * @param s MainSimulator where simulation is being run.
+	 * @param l list of alive individuals.
+	 */
 	public Observation(MainSimulator s, LinkedList<Individual> l) {
 		this(1,s,l);
 	}
 	
+	/** 
+	 * This method does the observation.
+	 * First, it sorts the alive individual list by comfort, comparing the one with greatest
+	 * comfort with the best individual recorded in MainSimulator by Path. If the alive individual is better,
+	 * then it is copied to the {@link MainSimulator#the_best}.<p>
+	 * Afterwards, current time information of simulated is printed according to specifications.  
+	 * @see simulator.Event#doEvent()
+	 * @see pathfinder.Individual#copyIndividual(Individual)
+	 * @return next observation
+	 */
 	@Override
 	protected List<Event> doEvent() {
-		//System.out.println("OBSER");
 		individual_list.sort(new IndividualComparatorByComfort());
 		IndividualComparatorByPath comp=new IndividualComparatorByPath();
 		if(!individual_list.isEmpty()) {

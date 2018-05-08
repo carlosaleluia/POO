@@ -15,8 +15,8 @@
 
 <!ELEMENT initialpoint EMPTY>
 <!ATTLIST initialpoint
-  xinicial CDATA #REQUIRED
-  yinicial CDATA #REQUIRED>
+  xinitial CDATA #REQUIRED
+  yinitial CDATA #REQUIRED>
 
 <!ELEMENT finalpoint EMPTY>
 <!ATTLIST finalpoint
@@ -37,7 +37,7 @@
 <!ELEMENT zone (#PCDATA)>
 <!ATTLIST zone
   xfinal CDATA #REQUIRED
-  xinicial CDATA #REQUIRED
+  xinitial CDATA #REQUIRED
   yfinal CDATA #REQUIRED
   yinicial CDATA #REQUIRED>
 
