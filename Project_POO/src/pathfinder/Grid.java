@@ -135,7 +135,7 @@ class Grid {
 	 * @param index (up,down,left,right)
 	 * @param value Value to be inserted
 	 */
-	public void setValue(int x, int y, int index, int value) {
+	 void setValue(int x, int y, int index, int value) {
 		Map[(y-1)*r.colsnb + (x-1)][index] = value;
 	}
 	
@@ -146,7 +146,7 @@ class Grid {
 	 * @param index (up,down,left,right)
 	 * @return Value on that position
 	 */
-	public int getValue(int x, int y, int index) {
+	 int getValue(int x, int y, int index) {
 		return Map[(y-1)*r.colsnb + (x-1)][index];
 	}
 	

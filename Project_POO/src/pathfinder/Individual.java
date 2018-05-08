@@ -33,7 +33,7 @@ class Individual {
 	 * @see MainSimulator
 	 * @see LinkedList
 	 */
-	Individual(MainSimulator m, LinkedList<Segment> list_segments) {		
+	public Individual(MainSimulator m, LinkedList<Segment> list_segments) {		
 		this.simulator = m;
 		this.list_segments = list_segments;
 		calculatecostnbsegments();
@@ -88,7 +88,7 @@ class Individual {
 	 * @see LinkedList
 	 * @see Segment
 	 */
-	public boolean checkcycles(Segment nextseg) {		
+	 boolean checkcycles(Segment nextseg) {		
 		
 		ListIterator<Segment> listIt = list_segments.listIterator(0);
 		boolean cycle = false;
