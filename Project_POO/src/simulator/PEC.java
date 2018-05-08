@@ -6,12 +6,23 @@ import java.util.PriorityQueue;
 
 public class PEC implements EventContainer{
 
+	/**
+	 * Data structure used to store events by ascending order of time.
+	 * @see Event
+	 */
 	PriorityQueue<Event> events;
 	
+	/**
+	 * Constructor of Pending Event Container (PEC).
+	 * @param initial estimate of priority queue size.
+	 */
 	public PEC(int size_estimate) {
 		events=new PriorityQueue<Event>(size_estimate, new EventComparatorByTime());
 	}
 	
+	/**
+	 * Default constructor of Pending Event Container (PEC) with estimate of 1000 events.
+	 */
 	public PEC() {
 		this(1000);
 	}
