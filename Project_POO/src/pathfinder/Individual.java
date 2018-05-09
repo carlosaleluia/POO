@@ -18,47 +18,47 @@ class Individual {
 	/**
 	 * Associated MainSimulator.
 	 */
-	MainSimulator simulator;
+	protected MainSimulator simulator;
 	/**
 	 * Individual comfort.
 	 */
-	float comfort;
+	protected float comfort;
 	/**
 	 * Sum cost of traversed segments.
 	 */
-	int current_cost = 0;
+	protected int current_cost = 0;
 	/**
 	 * Number of traversed segments so far.
 	 */
-	int current_nbsegments = 0;
+	protected int current_nbsegments = 0;
 	/**
 	 * Current Point in grid.
 	 */
-	Point current;
+	protected Point current;
 	/**
 	 * List of traversed segments.
 	 */
-	LinkedList<Segment> list_segments;
+	protected LinkedList<Segment> list_segments;
 	/**
 	 * Its associated Death Event.
 	 */
-	Death death_event;
+	protected Death death_event;
 	/**
 	 * Its associated Reproduction Event.
 	 */
-	Reproduction reproduction_event;
+	protected Reproduction reproduction_event;
 	/**
 	 * Its associated Move Event.
 	 */
-	Move move_event;
+	protected Move move_event;
 	/**
 	 * Whether or not the Individual has reached final point.
 	 */
-	boolean has_reached;
+	protected boolean has_reached;
 	
-	double[] death_p;
-	double[] move_p;
-	double[] reproduce_p;
+	protected double[] death_p;
+	protected double[] move_p;
+	protected double[] reproduce_p;
 	
 	/**
 	 * This method is the constructor of the Individual Class. <p>
@@ -92,7 +92,7 @@ class Individual {
 	 * @see Reproduction
 	 * @see Death 
 	 */
-	void updatecomfort(){
+	protected void updatecomfort(){
 		double a,b;
 		a = Math.pow(1 - (1.0*(current_cost - current_nbsegments + 2)/((simulator.max_cost_edge - 1)*current_nbsegments + 3)),simulator.comfortsens);
 		b = Math.pow(1-(this.findpath()/ (simulator.n + simulator.m + 1)),simulator.comfortsens);
@@ -109,7 +109,7 @@ class Individual {
 	 * and obstacles.
 	 * @return Calculated distance
 	 */
-	double findpath() {
+	protected double findpath() {
 	  double dist = 0;
 	  if(this.current.equals(this.simulator.destination)) {return 0;}
 	  else {
@@ -130,7 +130,7 @@ class Individual {
 	 * @see LinkedList
 	 * @see Segment
 	 */
-	 boolean checkcycles(Segment nextseg) {		
+	 protected boolean checkcycles(Segment nextseg) {		
 		
 		ListIterator<Segment> listIt = list_segments.listIterator(0);
 		boolean cycle = false;
@@ -161,7 +161,7 @@ class Individual {
 	 * @see LinkedList
 	 * @see Segment
 	 */
-	void calculatecostnbsegments() {		
+	protected void calculatecostnbsegments() {		
 		ListIterator<Segment> listIt = list_segments.listIterator(0);
 		this.current_cost = 0;
 		this.current_nbsegments = 0;
@@ -212,7 +212,7 @@ public String toString() {
  * It's used to update the best individual in the simulation.
  * @param i Individual with specifications to be copied
  */
-	void copyIndividual(Individual i) {	
+	protected void copyIndividual(Individual i) {	
 		this.current = i.current;
 		this.current_cost = i.current_cost;
 		this.current_nbsegments = i.current_nbsegments;

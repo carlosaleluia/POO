@@ -96,7 +96,7 @@ public class MainSimulator extends EventSimulator{
 		ReadFile r = new ReadFile(s); 
 		r.readXML();		
 		
-		Map = new Grid(r);
+		Map = new Grid2D(r);
 		this.max_cost_edge = Map.initializeGrid();
 		
 		this.init_population = r.initpop;
@@ -132,7 +132,7 @@ public class MainSimulator extends EventSimulator{
 		ReadFile r = new ReadFile(s); 
 		r.readXML();		
 		
-		Map = new Grid(r);
+		Map = new Grid2D(r);
 		this.max_cost_edge = Map.initializeGrid();
 		
 		this.init_population = r.initpop;

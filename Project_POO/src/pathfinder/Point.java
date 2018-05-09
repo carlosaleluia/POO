@@ -6,8 +6,8 @@ package pathfinder;
  */
 public class Point {
 	
-	int x;   
-    int y;   
+	protected int x;   
+    protected int y;   
 	
 	public Point(int x, int y) {
 		this.x=x;
