@@ -2,8 +2,6 @@ package simulator;
 
 import java.util.List;
 
-import pathfinder.MainSimulator;
-
 /**
  * This abstract class provides the general case of every time Event. <p>
  * Should be extended by any specific type of Event. It's main method, {@link simulator.Event#doEvent()}, returns a List of Events that must happen as a consequence. 
