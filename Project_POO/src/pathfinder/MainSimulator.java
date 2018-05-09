@@ -9,14 +9,63 @@ import generator.UnifRandom;
 import simulator.EventSimulator;
 import simulator.PEC;
 
+/**
+ * This class represents the extension of applied to the specific case of best path finding simulation.<p>
+ * Thus, creates a {@link pathfinder.ReadFile} to read the XML data and stores all the constants, also 
+ * creating the {@link pathfinder.Grid} used.<p>
+ * To simulate it from a main function, {@link pathfinder.MainSimulator#run()} should be used. 
+ *
+ */
 public class MainSimulator extends EventSimulator{
 	
 	
-	final int init_population, max_population, max_cost_edge;
-	final int n, m; //n is the number of lines, m is the number of columns
-	final int comfortsens; // Comfort Parameter
-	final int param_death, param_move, param_reproduce;	//Parameters for number generator
-	final Point initial, destination; // Initial and Final Point
+	/**
+	 * Initial population size.
+	 */
+	final int init_population;
+	
+	/**
+	 * Maximum population size. If population gets bigger, {@link pathfinder.MainSimulator#Epidemics()}
+	 * happens.
+	 */
+	final int max_population;
+	/**
+	 * Maximum cost edge.
+	 */
+	final int max_cost_edge;
+	
+	/**
+	 * Number of lines of the grid.
+	 */
+	final int n;
+	/**
+	 * Number of columns of the grid.
+	 */
+	final int m; 
+	/**
+	 * Comfort parameter.
+	 */
+	final int comfortsens;
+	/**
+	 * Death parameter.
+	 */
+	final int param_death;
+	/**
+	 * Move parameter.
+	 */
+	final int param_move;
+	/**
+	 * Reproduction parameter.
+	 */
+	final int param_reproduce;
+	/**
+	 * Initial Point.
+	 */
+	final Point initial;
+	/**
+	 * Final Point.
+	 */
+	final Point destination;
 	
 	/**
 	 * Whether or not the final point has been hit so far in the simulation.
@@ -39,7 +88,8 @@ public class MainSimulator extends EventSimulator{
 	/**
 	 * Default constructor of MainSimulator. By default, uses generators specified in project description, 
 	 * {@link generator.ExpRandom} and {@link generator.UnifRandom} respectively. Uses the given String to get 
-	 * XML file name and give it to {@link pathfinder.ReadFile}.
+	 * XML file name and give it to {@link pathfinder.ReadFile}. Then, creates {@link pathfinder.Grid}
+	 * and stores all constants from XML.
 	 * @param s XML file name.
 	 */
 	public MainSimulator(String s) {				
@@ -73,8 +123,10 @@ public class MainSimulator extends EventSimulator{
 	}
 	/**
 	 * Constructor of MainSimulator using given generators. Uses the given String to get 
-	 * XML file name and give it to {@link pathfinder.ReadFile}.
+	 * XML file name and give it to {@link pathfinder.ReadFile}. Then, creates {@link pathfinder.Grid}
+	 * and stores all constants from XML.
 	 * @param s XML file name.
+	 * @param g given generators to be used in generating times (g[0]) and survival and movement (g[1]).
 	 */
 	public MainSimulator(String s, GenerateNumber[] g) {				
 		ReadFile r = new ReadFile(s); 
@@ -105,6 +157,13 @@ public class MainSimulator extends EventSimulator{
 	}
 	
 	
+	/**
+	 * Implementation in specific case of this simulation.<p>
+	 * Consists in a cycle where events in the container are all simulated one at a time by
+	 * ascending time order. Stops when container has only an observation to be made, that can
+	 * happen either when all {@link pathfinder.Individual} die or when final instant comes.
+	 * @see simulator.Simulator#run()
+	 */
 	public void run(){
 	
 		this.StartSimulation();
@@ -120,6 +179,13 @@ public class MainSimulator extends EventSimulator{
 		System.out.println("Path of the best fit individual = " + this.the_best.printpath());	
 	}
 	
+	/** 
+	 * This method implements everything that should happen when beginning the best 
+	 * path finder simulation: create the list of alive individuals and the events 
+	 * associated with each {@link pathfinder.Individual} and adding them to the 
+	 * {@link simulator.PEC}.
+	 * @see simulator.Simulator#StartSimulation()
+	 */
 	@Override
 	public void StartSimulation(){
 		

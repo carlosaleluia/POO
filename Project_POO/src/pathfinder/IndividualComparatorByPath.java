@@ -3,7 +3,7 @@ package pathfinder;
 import java.util.Comparator;
 
 /**
- * This Comparator is used to compare Individuals by their Paths, to check whether the best Individual stored in MainSimulator is worse than the best one alive.<p>
+ * This Comparator is used to compare Individuals by their Paths, to check whether the best Individual stored in MainSimulator is worse than the best one alive.
  *
  */
 public class IndividualComparatorByPath implements Comparator<Individual>{

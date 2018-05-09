@@ -4,7 +4,7 @@ import generator.GenerateNumber;
 
 /**
  * This abstract class implements the Simulator, providing a general simulator of time Events. Thus, implements Next() (next Event to be simulated) and has general event container, sorted by order to be simulated.<p>
- * Also, contains a generator to provide generated numbers necessary for the simulation, random or not.<p>
+ * Also, contains a generator to provide generated numbers necessary for the simulation, random or not.
  * @see simulator.Event
  *
  */
@@ -51,7 +51,8 @@ public abstract class EventSimulator implements Simulator{
 	}
 	/**
 	 * This method generates a number according to the generator of this EventCointainer.
-	 * @param parameters to be used in number generation.
+	 * @param par parameters to be used in number generation.
+	 * @param index index of generator to be used in number generation.
 	 * @return number generated according to generator.
 	 */
 	public double Generator(double[] par, int index) {

@@ -6,7 +6,11 @@ import java.util.ListIterator;
 
 
 /**
- * This class stores everything that represents each individual.
+ * This class stores everything that represents each individual, and implements methods needed to
+ * update its comfort, number of segments traversed, cost, etc.<p>
+ * Also has more complex methods that check if its path contains a cycle, 
+ * {@link pathfinder.Individual#checkcycles(Segment)}, or that copy Individual 
+ * content to another one, {@link pathfinder.Individual#copyIndividual(Individual)},to update the best recorded in simulator.
  *
  */
 class Individual {

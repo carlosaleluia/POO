@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 
 /**
- * This Comparator is used to compare Events by their time, to sort them in the {@link simulator.PEC}.<p>
+ * This Comparator is used to compare Events by their time, to sort them in the {@link simulator.PEC}.
  * @see simulator.PEC
  */
 public class EventComparatorByTime implements Comparator<Event>{

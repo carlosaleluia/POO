@@ -21,7 +21,7 @@ public class PEC implements EventContainer{
 	
 	/**
 	 * Constructor of Pending Event Container (PEC).
-	 * @param initial estimate of priority queue size.
+	 * @param size_estimate initial estimate of priority queue size.
 	 */
 	public PEC(int size_estimate) {
 		events=new PriorityQueue<Event>(size_estimate, new EventComparatorByTime());

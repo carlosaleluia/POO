@@ -10,21 +10,21 @@ public interface EventContainer {
 
 	/**
 	 * This method adds a new Event to the container.
-	 * @param new Event to be added.
+	 * @param e new Event to be added.
 	 */
 	public void addEvent(Event e);
 	
 	
 	/**
 	 * This method adds multiple new Events to the container.
-	 * @param list of new Events to be added.
+	 * @param e list of new Events to be added.
 	 */
 	public void addEvent(List<Event> e);
 	
 	
 	/**
 	 * This method removes an Event in the container, if present.
-	 * @param Event to be removed.
+	 * @param e Event to be removed.
 	 */
 	public void removeEvent(Event e);
 	

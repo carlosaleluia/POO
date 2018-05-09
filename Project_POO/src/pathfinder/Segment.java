@@ -1,7 +1,9 @@
 package pathfinder;
 
 /**
- * This class represents a segment between two {@link pathfinder.Point}. Each segment will be added to Individual path when he crosses the segment in {@link Individual#checkcycles()}.
+ * This class represents a segment between two {@link pathfinder.Point}.<p>
+ *  Each segment will be added to Individual path when he crosses the segment in 
+ *  {@link Individual#checkcycles(Segment)}.
  *
  */
 class Segment {
