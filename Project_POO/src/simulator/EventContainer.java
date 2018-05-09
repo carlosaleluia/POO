@@ -2,6 +2,10 @@ package simulator;
 
 import java.util.List;
 
+/**
+ * This interface provides services related to any Event container: adding Events, removing, calling next Event or checking if container is empty.
+ * @see simulator.PEC
+ */
 public interface EventContainer {
 
 	/**

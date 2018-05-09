@@ -1,5 +1,10 @@
 package simulator;
 
+/**
+ * This interfaces provides services related to any simulation. <p>
+ * It can be implemented by more specific classes, such as EventSimulator or other types of simulation.
+ * 
+ */
 public interface Simulator {
 
 	/**

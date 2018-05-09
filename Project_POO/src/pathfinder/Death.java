@@ -5,6 +5,12 @@ import simulator.Event;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * This class extends Event, providing a specific implementation of {@link simulator.Event#doEvent()}: removing a certain Individual from the alive Individual list.
+ * @see simulator.Event
+ * @see pathfinder.Individual
+ *
+ */
 public class Death extends Event{
 
 	/**

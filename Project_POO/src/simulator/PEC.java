@@ -4,6 +4,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.PriorityQueue;
 
+/**
+ * This class implements {@link simulator.EventContainer}, specifying criteria for sorting the Events and which is the next in line.<p>
+ * In this PEC case, Events are ordered in ascending time order, using a {@link java.util.PriorityQueue}, providing a Comparator.
+ * @see simulator.PEC
+ * @see simulator.EventComparatorByTime
+ *
+ */
 public class PEC implements EventContainer{
 
 	/**

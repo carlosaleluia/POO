@@ -16,7 +16,7 @@
 <!ELEMENT initialpoint EMPTY>
 <!ATTLIST initialpoint
   xinitial CDATA #REQUIRED
-  yinitial CDATA #REQUIRED>
+  yinicial CDATA #REQUIRED>
 
 <!ELEMENT finalpoint EMPTY>
 <!ATTLIST finalpoint

@@ -2,7 +2,9 @@ package pathfinder;
 
 import java.util.Comparator;
 
-
+/**
+ * This Comparator is used to compare Individuals by their Comforts, to sort the alive Individuals and see if the one with greater comfort is better than the best one stored in MainSimulator.<p>
+ */
 public class IndividualComparatorByComfort implements Comparator<Individual>{
 	
 	/**

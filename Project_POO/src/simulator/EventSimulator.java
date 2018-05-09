@@ -2,6 +2,12 @@ package simulator;
 
 import generator.GenerateNumber;
 
+/**
+ * This abstract class implements the Simulator, providing a general simulator of time Events. Thus, implements Next() (next Event to be simulated) and has general event container, sorted by order to be simulated.<p>
+ * Also, contains a generator to provide generated numbers necessary for the simulation, random or not.<p>
+ * @see simulator.Event
+ *
+ */
 public abstract class EventSimulator implements Simulator{
 
 	/**
