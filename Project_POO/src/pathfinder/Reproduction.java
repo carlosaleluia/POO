@@ -83,21 +83,21 @@ public class Reproduction extends Event{
 		
 		individual_list.add(newborn);
 		List<Event> next_events=new ArrayList<Event>(4);
-		double[] aux1 = new double[1];
-		aux1[0] = individual.reproduce_p;
-		Event aux=new Reproduction(individual,individual_list,grid,aux1,time);
+		//double[] aux1 = new double[1];
+		//aux1[0] = individual.reproduce_p;
+		Event aux=new Reproduction(individual,individual_list,grid,individual.reproduce_p,time);
 		if(aux.time()<individual.death_event.time() && aux.time()<individual.simulator.GetFinalInstant())
 			next_events.add(aux);
-		aux1[0] = newborn.death_p;
-		aux=new Death(newborn,individual_list,aux1,time);
+		//aux1[0] = newborn.death_p;
+		aux=new Death(newborn,individual_list,newborn.death_p,time);
 		if(aux.time()<individual.simulator.GetFinalInstant())
 			next_events.add(aux);
-		aux1[0] = newborn.reproduce_p;
-		aux=new Reproduction(newborn,individual_list,grid,aux1,time);
+		//aux1[0] = newborn.reproduce_p;
+		aux=new Reproduction(newborn,individual_list,grid,newborn.reproduce_p,time);
 		if(aux.time()<newborn.death_event.time() && aux.time()<individual.simulator.GetFinalInstant())
 			next_events.add(aux);
-		aux1[0] = newborn.move_p;
-		aux=new Move(newborn,grid,aux1,time);
+		//aux1[0] = newborn.move_p;
+		aux=new Move(newborn,grid,newborn.move_p,time);
 		if(aux.time()<newborn.death_event.time() && aux.time()<individual.simulator.GetFinalInstant())
 			next_events.add(aux);
 		return next_events;

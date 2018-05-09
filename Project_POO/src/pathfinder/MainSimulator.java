@@ -130,8 +130,8 @@ public class MainSimulator extends EventSimulator{
 		Observation o;
 		Move m;
 		
-		double[] aux;
-		aux = new double[1];
+		//double[] aux;
+		//aux = new double[1];
 				
 		o = new Observation(this,this.list_individuals);
 		this.container.addEvent(o);		
@@ -139,12 +139,12 @@ public class MainSimulator extends EventSimulator{
 		for(i = 0 ; i < this.init_population ; i++) {
 			
 			a = new Individual(this,new LinkedList<Segment>());			
-			aux[0] = a.death_p;		
-			d = new Death(a,this.list_individuals, aux);
-			aux[0] = a.reproduce_p;
-			r = new Reproduction(a,this.list_individuals,this.Map,aux);
-			aux[0] = a.move_p;
-			m = new Move(a,this.Map,aux);
+			//aux[0] = a.death_p;		
+			d = new Death(a,this.list_individuals, a.death_p);
+			//aux[0] = a.reproduce_p;
+			r = new Reproduction(a,this.list_individuals,this.Map,a.reproduce_p);
+			//aux[0] = a.move_p;
+			m = new Move(a,this.Map,a.move_p);
 			this.list_individuals.add(a);
 			this.container.addEvent(d);
 			if(r.time()<a.death_event.time() && r.time()<GetFinalInstant())

@@ -52,9 +52,9 @@ class Individual {
 	 */
 	boolean has_reached;
 	
-	double death_p;
-	double move_p;
-	double reproduce_p;
+	double[] death_p;
+	double[] move_p;
+	double[] reproduce_p;
 	
 	/**
 	 * This method is the constructor of the Individual Class. <p>
@@ -71,11 +71,15 @@ class Individual {
 		this.simulator = m;
 		this.list_segments = list_segments;
 		calculatecostnbsegments();
+		death_p=new double[1];
+		move_p=new double[1];
+		reproduce_p=new double[1];
 		
 		if(list_segments.isEmpty()) {current = new Point(simulator.initial.x,simulator.initial.y);}
 		else {current = new Point(list_segments.getLast().end.x,list_segments.getLast().end.y);}
 		updatecomfort();		
 	}
+	
 	
 	/**
 	 * This method calculates the comfort of the Individual according to the provided equation. <p>
@@ -91,9 +95,9 @@ class Individual {
 		this.comfort = (float) (a*b);
 		if(this.comfort < 0) {this.comfort = 0;}
 		if(this.comfort == 1.0) {this.comfort = (float) 0.9999;}		
-		this.death_p = (1 - Math. log(1 - this.comfort))*this.simulator.param_death;
-		this.move_p = (1 - Math. log(this.comfort))*this.simulator.param_move;
-		this.reproduce_p = (1 - Math. log(this.comfort))*this.simulator.param_reproduce;
+		this.death_p[0] = (1 - Math. log(1 - this.comfort))*this.simulator.param_death;
+		this.move_p[0] = (1 - Math. log(this.comfort))*this.simulator.param_move;
+		this.reproduce_p[0] = (1 - Math. log(this.comfort))*this.simulator.param_reproduce;
 	}
 	
 	/**

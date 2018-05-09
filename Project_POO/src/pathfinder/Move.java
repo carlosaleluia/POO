@@ -108,10 +108,10 @@ public class Move extends Event{
 		}
 
 		List<Event> next_events=new ArrayList<Event>(1);
-		double[] aux1;
-		aux1 = new double[1];
-		aux1[0] = individual.move_p;
-		Event aux=new Move(individual,grid,aux1,time);
+		//double[] aux1;
+		//aux1 = new double[1];
+		//aux1[0] = individual.move_p;
+		Event aux=new Move(individual,grid,individual.move_p,time);
 		if(aux.time()<individual.death_event.time() && aux.time()<individual.simulator.GetFinalInstant()) {
 			next_events.add(aux);
 		}
