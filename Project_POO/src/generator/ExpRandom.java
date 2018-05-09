@@ -1,10 +1,10 @@
 package generator;
 
-import java.util.Random;
+//import java.util.Random;
 
 public class ExpRandom extends GenerateRandom{
 	
-	static Random random =new Random();
+	//static Random random =new Random();
 	
 	public double Generate(double[] par) {
 		

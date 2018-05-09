@@ -46,7 +46,7 @@ public abstract class EventSimulator implements Simulator{
 	 * This method returns number of events already simulated, to access outside of EventSimulator.
 	 * @return number of events done.
 	 */
-	public float GetNbEventsDone() {
+	public int GetNbEventsDone() {
 		return nb_events_done;
 	}
 	/**

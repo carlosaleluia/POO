@@ -79,9 +79,7 @@ public class Observation extends Event{
 		System.out.println("\tPath of the best fit individual: "+simulator.the_best.printpath());
 		System.out.println("\t"+spec+"                           "+c_c);
 		List<Event> next_events=new ArrayList<Event>(1);
-		if(observation_number<19) {
-			next_events.add(new Observation(observation_number+1,simulator,individual_list));
-		}
+		next_events.add(new Observation(observation_number+1,simulator,individual_list));
 		return next_events;
 	}
 

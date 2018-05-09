@@ -47,7 +47,7 @@ public class MainSimulator extends EventSimulator{
 		this.param_reproduce = r.param_reproduce;
 		this.nb_events_done = 0;
 				
-		this.container = new PEC(3* this.max_population);
+		this.container = new PEC(3* (this.max_population+1));
 		this.generator = new ExpRandom();
 		this.list_individuals = new LinkedList<Individual>();
 		this.the_best = new Individual(this,new LinkedList<Segment>());
@@ -64,7 +64,10 @@ public class MainSimulator extends EventSimulator{
 			if(this.list_individuals.size() > this.max_population) {
 				Epidemics();
 			}			
-		}		
+		}
+		if(list_individuals.size()!=0) {
+			Next();
+		}
 		System.out.println("Path of the best fit individual = " + this.the_best.printpath());	
 	}
 	
@@ -107,7 +110,7 @@ public class MainSimulator extends EventSimulator{
 		else return false;
 	}
 	
-	void Epidemics() {
+	protected void Epidemics() {
 		list_individuals.sort(new IndividualComparatorByComfort());
 		GenerateNumber unif=new UnifRandom();
 		double[] survive=new double[2];

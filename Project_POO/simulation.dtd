@@ -39,7 +39,7 @@
   xfinal CDATA #REQUIRED
   xinitial CDATA #REQUIRED
   yfinal CDATA #REQUIRED
-  yinicial CDATA #REQUIRED>
+  yinitial CDATA #REQUIRED>
 
 <!ELEMENT obstacle EMPTY>
 <!ATTLIST obstacle

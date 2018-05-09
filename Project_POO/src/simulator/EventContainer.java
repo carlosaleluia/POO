@@ -23,15 +23,16 @@ public interface EventContainer {
 	
 	
 	/**
-	 * This method adds multiple new Events to the container.
-	 * @param list of new Events to be added.
+	 * This method removes an Event in the container, if present.
+	 * @param Event to be removed.
 	 */
 	public void removeEvent(Event e);
 	
 	
+	
 	/**
-	 * This method removes an Event in the container, if present.
-	 * @param Event to be removed.
+	 * This method returns number of events in container
+	 * @return number of Events in EventContainer
 	 */
 	public int numberEvents();
 	
