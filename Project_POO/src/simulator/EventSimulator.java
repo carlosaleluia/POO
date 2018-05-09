@@ -11,9 +11,9 @@ import generator.GenerateNumber;
 public abstract class EventSimulator implements Simulator{
 
 	/**
-	 * Generator of numbers (random or deterministic) to be used in simulation.
+	 * Generators of numbers (random or deterministic) to be used in simulation.
 	 */
-	protected GenerateNumber generator;
+	protected GenerateNumber[] generators;
 	/**
 	 * Event container where events to be simulated are stored.
 	 */
@@ -54,8 +54,11 @@ public abstract class EventSimulator implements Simulator{
 	 * @param parameters to be used in number generation.
 	 * @return number generated according to generator.
 	 */
-	public double Generator(double[] par) {
-		return generator.Generate(par);
+	public double Generator(double[] par, int index) {
+		if(generators.length>index) 
+			return generators[index].Generate(par);
+		else
+			return 0;
 	}
 	
 }

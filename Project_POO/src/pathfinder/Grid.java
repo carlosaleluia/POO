@@ -2,6 +2,13 @@ package pathfinder;
 
 import java.util.LinkedList;
 
+/**
+ * This class represents the map where Individuals will move. Being a 2D grid, stores values in 2D int array. Is used to get valid segments where individual can move given its current point in the map.<p>
+ * @see pathfinder.Individual
+ * @see pathfinder.Move
+ * 
+ *
+ */
 class Grid {	
 	
 	int[][] Map;

@@ -6,6 +6,14 @@ import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class extends Event, providing a specific implementation of {@link simulator.Event#doEvent()}: making an observation about present instant.<p>
+ * Prints information about Individual with best path so far, adding other info.
+ * @see simulator.Event
+ * @see pathfinder.MainSimulator
+ * @see pathfinder.Individual
+ *
+ */
 public class Observation extends Event{
 	
 	/**

@@ -7,6 +7,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * This class extends Event, providing a specific implementation of {@link simulator.Event#doEvent()}: reproducing a certain Individual and adding the newborn to the list of alive Individuals.
+ * @see simulator.Event
+ * @see pathfinder.Individual
+ *
+ */
 public class Reproduction extends Event{
 
 	/**
@@ -36,7 +42,7 @@ public class Reproduction extends Event{
 		individual_list=l;
 		grid=g;
 		individual.reproduction_event=this;
-		time=individual.simulator.Generator(par)+present;
+		time=individual.simulator.Generator(par,0)+present;
 	}
 	/**
 	 * Constructor used in the beginning of the simulation.<p>

@@ -5,17 +5,51 @@ import java.util.ListIterator;
 
 
 
+/**
+ * This class stores everything that represents each individual.
+ *
+ */
 class Individual {
 	
+	/**
+	 * Associated MainSimulator.
+	 */
 	MainSimulator simulator;
+	/**
+	 * Individual comfort.
+	 */
 	float comfort;
+	/**
+	 * Sum cost of traversed segments.
+	 */
 	int current_cost = 0;
+	/**
+	 * Number of traversed segments so far.
+	 */
 	int current_nbsegments = 0;
+	/**
+	 * Current Point in grid.
+	 */
 	Point current;
+	/**
+	 * List of traversed segments.
+	 */
 	LinkedList<Segment> list_segments;
+	/**
+	 * Its associated Death Event.
+	 */
 	Death death_event;
+	/**
+	 * Its associated Reproduction Event.
+	 */
 	Reproduction reproduction_event;
+	/**
+	 * Its associated Move Event.
+	 */
 	Move move_event;
+	/**
+	 * Whether or not the Individual has reached final point.
+	 */
 	boolean has_reached;
 	
 	double death_p;

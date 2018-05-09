@@ -1,5 +1,9 @@
 package pathfinder;
 
+/**
+ * This class represents a Point in the grid, with fields x and y being its coordinates.
+ *
+ */
 public class Point {
 	
 	int x;   
@@ -9,7 +13,10 @@ public class Point {
 		this.x=x;
 		this.y=y;
 	}
-
+	/**
+	 * This method is an override of the toString method() to print the contents of the Point.
+	 * @return  (x,y)
+	 */
 	@Override
 	public String toString() {
 		return "(" + x + "," + y + ")";

@@ -35,7 +35,7 @@ public class Death extends Event{
 		individual=i;
 		individual_list=l;
 		individual.death_event=this;
-		time=individual.simulator.Generator(par)+present;
+		time=individual.simulator.Generator(par,0)+present;
 	}
 	/**
 	 * Constructor used in the beginning of the simulation.<p>

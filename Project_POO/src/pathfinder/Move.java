@@ -5,11 +5,18 @@ import simulator.Event;
 import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import generator.GenerateNumber;
 import generator.UnifRandom;
 
+
+/**
+ * This class extends Event, providing a specific implementation of {@link simulator.Event#doEvent()}: moving a certain Individual in the provided grid.
+ * @see simulator.Event
+ * @see pathfinder.Individual
+ * @see pathfinder.Grid
+ *
+ */
 public class Move extends Event{
 
 	/**
@@ -36,7 +43,7 @@ public class Move extends Event{
 		individual=i;
 		grid=g;
 		individual.move_event=this;
-		time=individual.simulator.Generator(par)+present;
+		time=individual.simulator.Generator(par,0)+present;
 	}
 	/**
 	 * Constructor used in the beginning of the simulation.<p>
@@ -82,9 +89,6 @@ public class Move extends Event{
 				break;
 			}
 		}
-		//Random random=new Random();
-		//Segment new_segment=seglist.get(random.nextInt(seglist.size()));
-		//individual.checkcycles(new_segment);
 		individual.updatecomfort();
 		
 		if(individual.list_segments.isEmpty()) {
