@@ -18,7 +18,7 @@ public abstract class Event {
 	 * This method does the Event and returns new Events that should happen afterwards as a consequence.
 	 * @return list of Events that are consequence of doing present Event.
 	 */
-	protected abstract List<Event> doEvent();
+	public abstract List<Event> doEvent();
 	
 	/**
 	 * Getter for Event time.

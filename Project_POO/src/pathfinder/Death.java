@@ -54,7 +54,7 @@ public class Death extends Event{
 	 * @return null (no Event happens as consequence)
 	 */
 	@Override
-	protected List<Event> doEvent() {
+	public List<Event> doEvent() {
 		individual_list.remove(individual);
 		return null;
 	}

@@ -65,7 +65,7 @@ public class Reproduction extends Event{
 	 * newborn, if Event time is lower than individual death time and simulation final instant.
 	 */
 	@Override
-	protected List<Event> doEvent() {		
+	public List<Event> doEvent() {		
 		int length_new=(int)Math.ceil(individual.list_segments.size()*(0.9+0.1*individual.comfort));
 		LinkedList<Segment> newborn_list=new LinkedList<Segment>();
 		int k=0;

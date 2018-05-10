@@ -73,7 +73,7 @@ public class Move extends Event{
 	 * individual death time and simulation final instant.
 	 */
 	@Override
-	protected List<Event> doEvent() {
+	public List<Event> doEvent() {
 		Point position=individual.current;
 		LinkedList<Segment> seglist=grid.ValidSegments(position);
 		GenerateNumber unif=new UnifRandom();

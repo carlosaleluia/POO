@@ -63,7 +63,7 @@ public class Observation extends Event{
 	 * @return next observation
 	 */
 	@Override
-	protected List<Event> doEvent() {
+	public List<Event> doEvent() {
 		individual_list.sort(new IndividualComparatorByComfort());
 		IndividualComparatorByPath comp=new IndividualComparatorByPath();
 		if(!individual_list.isEmpty()) {
