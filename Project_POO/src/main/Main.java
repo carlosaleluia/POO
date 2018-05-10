@@ -9,7 +9,7 @@ public class Main{
 	 * @param args name of XML file with constants.
 	 * @throws Exception error reading XML file.
 	 */
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args){
 		
 		
 		 //if (args.length <= 0) {
@@ -18,7 +18,7 @@ public class Main{
 		  //  }
 		// String document = args[0];
 		
-		MainSimulator simulator = new MainSimulator("test_2.xml");	
+		MainSimulator simulator = new MainSimulator("data1.xml");	
 		
 		simulator.run();		
 	}
