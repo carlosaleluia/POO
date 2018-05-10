@@ -156,8 +156,7 @@ public class ReadFile extends DefaultHandler {
 							break;}
 						 default:{break;}			 							 	
 				 }
-				//	System.out.print( "" + atts.getLocalName(i) + " " + atts.getValue(i) + " ");
-					 }	
+				}	
 				 idzone++;
 			 }
 			 else if (tag.equals("obstacles")){	
@@ -216,14 +215,14 @@ public void characters(char[]ch,int start,int length){
 		if(this.cost_zones[idzone-1] <= 0){ throw new Exception("Invalid zone cost");}
 		}
 		catch (Exception a){System.err.println(a.getMessage()); System.exit(1);}
-		//	 System.out.print(new String(ch,start,length) );
 } 
 	
 		 
 	 protected void readXML() {		 
 		 	 
 		// builds the SAX parser
-		 SAXParserFactory fact = SAXParserFactory.newInstance();		 
+		 SAXParserFactory fact = SAXParserFactory.newInstance();
+		 int i = 0;
 		 
 		 try {
 		 fact.setValidating(true); 
@@ -233,6 +232,10 @@ public void characters(char[]ch,int start,int length){
 		 DefaultHandler handler = this;			 
 		 saxParser.parse(new File(this.FileName), handler); 
 		 
+		 for(i=0; i<idzone; i++ ) {
+			 if(this.cost_zones[i] <=0) {throw new Exception("Cost zone not defined");}			 
+		 }		 
+		 if(this.maxpop < 5) {throw new Exception("Maximum Population should be bigger than 5 individuals"); }
 		 if(this.nbrobstacles != this.idobstacle){ throw new Exception("Number of obstacles doesn't match obstacles");}
 		 if(this.nbrzones != this.idzone){ throw new Exception("Number of zones doesn't match zones");}
 		 }
@@ -240,7 +243,7 @@ public void characters(char[]ch,int start,int length){
 		 catch(SAXException e) {System.err.println("Parser error"); System.exit(1);} 
 		 catch(ParserConfigurationException e) { System.err.println("Parser configuration error"); System.exit(1);}
 		 catch (Exception a) {System.err.println(a.getMessage()); System.exit(1); }		 
-	 }
+	 	}
 
 		  
 		  public void error(SAXParseException exception) {		     

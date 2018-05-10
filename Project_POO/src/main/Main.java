@@ -18,7 +18,7 @@ public class Main{
 		  //  }
 		// String document = args[0];
 		
-		MainSimulator simulator = new MainSimulator("data1.xml");	
+		MainSimulator simulator = new MainSimulator("test_2.xml");	
 		
 		simulator.run();		
 	}
