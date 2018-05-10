@@ -15,8 +15,8 @@
    <obstacles num="0">
    </obstacles>
    <events>
-      <death param="100"/>
-      <reproduction param="10"/>
-      <move param="1"/>
+      <death param="1000"/>
+      <reproduction param="100"/>
+      <move param="10"/>
    </events>
 </simulation>
