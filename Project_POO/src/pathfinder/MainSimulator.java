@@ -167,7 +167,6 @@ public class MainSimulator extends EventSimulator{
 	public void run(){
 	
 		this.StartSimulation();
-		System.out.println("TF: "+GetFinalInstant());
 		while(!HasOnlyObservation()) {
 			Next();
 			if(this.list_individuals.size() > this.max_population) {

@@ -12,11 +12,11 @@ public class Main{
 	 */
 	public static void main(String[] args){
 		
-		 if (args.length <= 0 || args.length > 1) {
-		      System.err.println("Usage: java -jar XMLFILE");
-		      System.exit(1);
-		    }
+		if (args.length <= 0 || args.length > 1) {
+			System.err.println("Usage: java -jar XMLFILE");
+		    System.exit(1);
+		}
 		Simulator simulator = new MainSimulator(args[0]);			
-		simulator.run();		
+		simulator.run();
 	}
 }
