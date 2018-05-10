@@ -165,7 +165,7 @@ public class MainSimulator extends EventSimulator{
 	 * @see simulator.Simulator#run()
 	 */
 	public void run(){
-	
+	//
 		this.StartSimulation();
 		while(!HasOnlyObservation()) {
 			Next();
