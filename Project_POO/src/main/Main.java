@@ -1,6 +1,7 @@
 package main;
 
 import pathfinder.MainSimulator;
+import simulator.Simulator;
 
 public class Main{
 	
@@ -15,7 +16,7 @@ public class Main{
 		      System.err.println("Usage: java -jar XMLFILE");
 		      System.exit(1);
 		    }
-		MainSimulator simulator = new MainSimulator(args[0]);			
+		Simulator simulator = new MainSimulator(args[0]);			
 		simulator.run();		
 	}
 }

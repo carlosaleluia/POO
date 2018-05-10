@@ -167,6 +167,7 @@ public class MainSimulator extends EventSimulator{
 	public void run(){
 	
 		this.StartSimulation();
+		System.out.println("TF: "+GetFinalInstant());
 		while(!HasOnlyObservation()) {
 			Next();
 			if(this.list_individuals.size() > this.max_population) {
@@ -212,7 +213,8 @@ public class MainSimulator extends EventSimulator{
 			//aux[0] = a.move_p;
 			m = new Move(a,this.Map,a.move_p);
 			this.list_individuals.add(a);
-			this.container.addEvent(d);
+			if(d.time()<GetFinalInstant())
+				this.container.addEvent(d);
 			if(r.time()<a.death_event.time() && r.time()<GetFinalInstant())
 				this.container.addEvent(r);
 			if(m.time()<a.death_event.time() && m.time()<GetFinalInstant())
