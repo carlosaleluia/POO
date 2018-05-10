@@ -1,7 +1,5 @@
 package generator;
 
-import pathfinder.MainSimulator;
-
 //import java.util.Random;
 
 /**
