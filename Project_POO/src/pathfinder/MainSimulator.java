@@ -224,7 +224,7 @@ public class MainSimulator extends EventSimulator{
 	 * Checks whether only Event on PEC is the observation.
 	 * @return true if has only observation and false otherwise.
 	 */
-	private boolean HasOnlyObservation() {
+	boolean HasOnlyObservation() {
 		if (container.numberEvents()<=1) return true;
 		else return false;
 	}
