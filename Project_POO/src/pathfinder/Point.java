@@ -40,7 +40,7 @@ public class Point {
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (!(obj instanceof Point))
 			return false;
 		Point other = (Point) obj;
 		if (Double.doubleToLongBits(x) != Double.doubleToLongBits(other.x))
@@ -50,6 +50,7 @@ public class Point {
 		if(y == other.y && x == other.x) 
 			return true;
 		return true;
+		
 	}
 	
 	
