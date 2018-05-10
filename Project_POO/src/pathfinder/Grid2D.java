@@ -3,21 +3,28 @@ package pathfinder;
 import java.util.LinkedList;
 
 /**
- * This class represents the map where Individuals will move. Being a 2D grid, 
- * stores values in 2D int array. Is used to get valid segments where individual 
- * can move given its current point in the map.
- * @see pathfinder.Individual
- * @see pathfinder.Move
- * 
+ * This class implements {@link pathfinder.Grid} for a 2D map where Individuals 
+ * can move. Thus, it stores information in a 2D Matrix of integers, {@link pathfinder.Grid2D#Map}, 
+ * with dimension (number_rows*number_columns)x4. Each row of this matrix represents a Point, and each line
+ * is the cost of moving to one direction, counting counter clockwise.
+ * @see pathfinder.Grid2D#initializeGrid()
+ * @see pathfinder.Grid2D#ValidSegments(Point)
  *
  */
 public class Grid2D implements Grid{	
 	
+	/**
+	 * 2D int Matrix where cost for each of movement directions is stored.<p>
+	 * Zero cost means opposite site of segment is an obstacle.
+	 */
 	int[][] Map;
+	/**
+	 * Read File used to extract information from XML.
+	 */
 	ReadFile r;
 		
 	/**
-	 * This method is the constructor of the Grid Class.
+	 * This method is the constructor of the Grid2D Class.
 	 * @param  r   ReadFile object with all the informations needed to build the map
 	 * @see ReadFile
 	 */
