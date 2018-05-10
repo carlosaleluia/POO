@@ -17,6 +17,11 @@ public class ExpRandom extends GenerateRandom{
 	public double Generate(double[] par) {
 		
 		double next = random.nextDouble();
+		
+		if(par.length < 1) {
+			System.err.println("Not enough parameters given for the generation of random numbers");
+			System.exit(1);
+		}		
 		return -par[0]*Math.log(1.0-next);
 	
 	}

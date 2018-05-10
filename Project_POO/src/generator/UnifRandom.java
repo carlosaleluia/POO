@@ -17,7 +17,10 @@ public class UnifRandom extends GenerateRandom{
 		
 		//int n =random.nextInt(par[2]) + par[1]; 
 		//return n;
-		
+		if(par.length < 2) {
+			System.err.println("Not enough parameters given for the generation of random numbers");
+			System.exit(1);
+		}
 		return random.nextDouble()*(par[1]-par[0])+par[0];
 			
 	}

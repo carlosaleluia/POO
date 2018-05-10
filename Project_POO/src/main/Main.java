@@ -11,15 +11,11 @@ public class Main{
 	 */
 	public static void main(String[] args){
 		
-		
-		 //if (args.length <= 0) {
-		  //    System.out.println("Usage: java BetterSAXChecker URL");
-		   //   return;
-		  //  }
-		// String document = args[0];
-		
-		MainSimulator simulator = new MainSimulator("data1.xml");	
-		
+		 if (args.length <= 0 || args.length > 1) {
+		      System.err.println("Usage: java -jar XMLFILE");
+		      System.exit(1);
+		    }
+		MainSimulator simulator = new MainSimulator(args[0]);			
 		simulator.run();		
 	}
 }
