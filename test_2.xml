@@ -6,7 +6,7 @@
    <finalpoint xfinal="3" yfinal="3"/>
    <specialcostzones num="2">
       <zone xinitial="1" yinitial="1" xfinal="4" yfinal="4">4</zone>
-<zone xinitial="1" yinitial="1" xfinal="4" yfinal="4">8</zone>
+      <zone xinitial="1" yinitial="1" xfinal="4" yfinal="4">8</zone>
    </specialcostzones>
    <obstacles num="3">
       <obstacle xpos="3" ypos="2"/>

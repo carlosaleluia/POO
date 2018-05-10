@@ -15,6 +15,7 @@
 	<obstacle xpos="3" ypos="3"/>
 	<obstacle xpos="6" ypos="3"/>
 	<obstacle xpos="2" ypos="4"/>
+   <obstacle xpos="5" ypos="4"/>
 	<obstacle xpos="6" ypos="4"/>
 	<obstacle xpos="1" ypos="5"/>
 	<obstacle xpos="4" ypos="5"/>
