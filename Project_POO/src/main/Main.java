@@ -8,7 +8,6 @@ public class Main{
 	/**
 	 * Main method that runs project.
 	 * @param args name of XML file with constants.
-	 * @throws Exception error reading XML file.
 	 */
 	public static void main(String[] args){
 		
