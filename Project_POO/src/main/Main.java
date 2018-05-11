@@ -3,6 +3,10 @@ package main;
 import pathfinder.MainSimulator;
 import simulator.Simulator;
 
+/**
+ * This class serves simply to run the project.
+ *
+ */
 public class Main{
 	
 	/**
