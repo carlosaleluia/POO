@@ -31,7 +31,7 @@ class Segment {
 	 * Getter for segment cost
 	 * @return segment cost
 	 */
-	int getCost() {
+	public int getCost() {
 		return this.cost;
 	}
 	
